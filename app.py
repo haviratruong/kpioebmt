@@ -3685,18 +3685,18 @@ def render_cm_view():
 # CSS Global — màu Ocean Edu
 st.markdown(f"""<style>
 /* Ẩn hoàn toàn thanh công cụ Streamlit (Share, Edit, GitHub, Star, Footer, Badge) cho người dùng */
-#MainMenu {visibility: hidden; display: none !important;}
-header {visibility: hidden; display: none !important;}
-footer {visibility: hidden; display: none !important;}
-[data-testid="stToolbar"] {visibility: hidden; display: none !important;}
-[data-testid="stDecoration"] {visibility: hidden; display: none !important;}
-[data-testid="stStatusWidget"] {visibility: hidden; display: none !important;}
-[data-testid="stAppDeployButton"] {visibility: hidden; display: none !important;}
-.viewerBadge_container__r5tak {display: none !important;}
-.viewerBadge_link__qRIco {display: none !important;}
-[class*="viewerBadge"] {display: none !important;}
-[class*="profileBadge"] {display: none !important;}
-[class*="manageApp"] {display: none !important;}
+#MainMenu {{visibility: hidden; display: none !important;}}
+header {{visibility: hidden; display: none !important;}}
+footer {{visibility: hidden; display: none !important;}}
+[data-testid="stToolbar"] {{visibility: hidden; display: none !important;}}
+[data-testid="stDecoration"] {{visibility: hidden; display: none !important;}}
+[data-testid="stStatusWidget"] {{visibility: hidden; display: none !important;}}
+[data-testid="stAppDeployButton"] {{visibility: hidden; display: none !important;}}
+.viewerBadge_container__r5tak {{display: none !important;}}
+.viewerBadge_link__qRIco {{display: none !important;}}
+[class*="viewerBadge"] {{display: none !important;}}
+[class*="profileBadge"] {{display: none !important;}}
+[class*="manageApp"] {{display: none !important;}}
 
 /* Nút chính dùng màu xanh Ocean Edu */
 .stButton > button[kind="primary"] {{
