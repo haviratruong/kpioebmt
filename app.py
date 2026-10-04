@@ -1684,7 +1684,7 @@ def render_schedule_admin(is_ketoan=False):
 
     conn = get_conn()
     c = conn.cursor()
-    c.execute("SELECT id, display_name FROM users WHERE role IN ('EC','Admin') ORDER BY display_name")
+    c.execute("SELECT id, display_name FROM users WHERE (is_active=1 OR is_active IS NULL) AND role NOT IN ('CM', 'cm_daotao') ORDER BY display_name")
     staff_all = c.fetchall()
     conn.close()
 
@@ -2768,7 +2768,7 @@ def render_admin_overview():
     st.caption("🟢 Đúng hạn | 🔴 Trễ/Chưa nộp quá giờ | 🟡 Có giải trình | ⚪ Chưa đến deadline")
     conn4 = get_conn()
     c4    = conn4.cursor()
-    c4.execute("SELECT id, display_name, role FROM users WHERE role IN ('EC','Admin') ORDER BY role DESC, display_name")
+    c4.execute("SELECT id, display_name, role FROM users WHERE (is_active=1 OR is_active IS NULL) AND role NOT IN ('CM', 'cm_daotao') ORDER BY role DESC, display_name")
     users4 = c4.fetchall()
     c4.execute("SELECT code, rule_name FROM rules WHERE frequency IN ('daily','weekly_thu','weekly_sun')")
     rules4 = c4.fetchall()
@@ -3056,7 +3056,7 @@ def render_admin_settings():
         st.markdown("### 🔄 Vòng Tròn Kiểm Tra Đồng Đội (Peer Check) — Tháng Này")
         st.caption("Mỗi người sẽ được phân công kiểm tra 1 đồng đội về: Đăng bài MKT, Tương tác nhóm, Báo cáo đầu/cuối ca. Không ai tự chấm điểm cho mình.")
 
-        c.execute("SELECT id, display_name FROM users WHERE (is_active=1 OR is_active IS NULL) AND role IN ('EC','Admin','BM','ATL') ORDER BY display_name")
+        c.execute("SELECT id, display_name FROM users WHERE (is_active=1 OR is_active IS NULL) AND role NOT IN ('CM', 'cm_daotao') ORDER BY display_name")
         users_ec = c.fetchall()
         user_opts = {u["id"]: u["display_name"] for u in users_ec}
         user_ids = list(user_opts.keys())
@@ -3102,7 +3102,7 @@ def render_admin_settings():
     # ── TAB S4: DUTY THÁNG & QUY CHẾ ─────────────────────────────────────────
     with tab_s4:
         st.markdown("### 🎯 Phân Công Xoay Vòng Nhiệm Vụ Tháng")
-        c.execute("SELECT id, display_name FROM users WHERE (is_active=1 OR is_active IS NULL) AND role IN ('EC','Admin','BM','ATL') ORDER BY display_name")
+        c.execute("SELECT id, display_name FROM users WHERE (is_active=1 OR is_active IS NULL) AND role NOT IN ('CM', 'cm_daotao') ORDER BY display_name")
         users_duty = c.fetchall()
         user_opts_d = {u["id"]: u["display_name"] for u in users_duty}
         user_ids_d = list(user_opts_d.keys())
@@ -3156,7 +3156,7 @@ def render_monthly_planning():
     with tab_a:
         conn = get_conn()
         c = conn.cursor()
-        c.execute("SELECT id, display_name FROM users WHERE role IN ('EC','Admin') ORDER BY display_name")
+        c.execute("SELECT id, display_name FROM users WHERE (is_active=1 OR is_active IS NULL) AND role NOT IN ('CM', 'cm_daotao') ORDER BY display_name")
         users = c.fetchall()
         c.execute("SELECT mt.*, u.display_name as name FROM monthly_targets mt JOIN users u ON mt.user_id=u.id WHERE mt.year_month=?", (ym,))
         existing = c.fetchall()
@@ -3258,7 +3258,7 @@ def render_monthly_planning():
 
         conn_e = get_conn()
         ce = conn_e.cursor()
-        ce.execute("SELECT id, display_name FROM users WHERE role IN ('EC','Admin') ORDER BY display_name")
+        ce.execute("SELECT id, display_name FROM users WHERE (is_active=1 OR is_active IS NULL) AND role NOT IN ('CM', 'cm_daotao') ORDER BY display_name")
         staff_list = ce.fetchall()
         conn_e.close()
 
