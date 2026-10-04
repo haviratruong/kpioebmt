@@ -202,7 +202,7 @@ def init_db():
     except Exception:
         pass
 
-    # ── Bảng Lịch Sự Kiện STEAM từ Phòng Đào Tạo ──────────────────────────────
+    # ── Bảng Lịch Sự Kiện STEAM (Trường Học & Hội Thảo) ─────────────────────────
     c.execute('''CREATE TABLE IF NOT EXISTS steam_schedule (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         event_date TEXT,
@@ -708,12 +708,6 @@ def get_user_guide_info(role):
             "title": "📖 Quy Chế & Điều Hành Chi Nhánh",
             "url": "https://haviratruong.github.io/kpioebmt/tai_lieu_he_thong_kpi.html",
             "desc": "15 quy tắc KPI & chế tài vi phạm"
-        }
-    elif role in ('CM', 'cm_daotao'):
-        return {
-            "title": "📖 File Quản Lý Phòng Đào Tạo",
-            "url": "https://docs.google.com/spreadsheets/d/15nKA3esX2kAdP9TBT4oWTNr9-Kef7SrmHQfB1zfQSyg/edit?gid=774645173#gid=774645173",
-            "desc": "File Quản lý lớp, tái phí & học viên"
         }
     return {
         "title": "📖 Cổng Hướng Dẫn Chi Nhánh",
@@ -1414,7 +1408,7 @@ def render_ec_daily(uid, name, ym):
     padding:14px 18px;margin-top:8px">
 <b style="color:#4a148c;font-size:1rem">🔬 Theo Dõi Lịch STEAM Tuần Này</b><br>
 <span style="color:#555;font-size:.9rem">
-Xem lịch STEAM từ phòng đào tạo — Nếu có tên bạn thì chuẩn bị ngay!</span><br>
+Xem lịch sự kiện STEAM / Ngoại khóa trường học — Nếu có tên bạn thì chuẩn bị ngay!</span><br>
 <a href="{STEAM_SHEET_URL}" target="_blank"
    style="color:#4a148c;font-weight:700;font-size:.95rem">
 🔗 Mở Lịch STEAM Google Sheets &rarr;</a>
@@ -1870,8 +1864,8 @@ def render_schedule_admin(is_ketoan=False):
                 st.rerun()
 
     with tab_steam:
-        st.markdown("### 🔬 Quản Lý Lịch Sự Kiện STEAM (Từ Phòng Đào Tạo)")
-        st.caption("Nhập lịch STEAM từ phòng đào tạo. Hệ thống sẽ tự động ghép vào lịch làm việc hàng ngày của các EC được phân công.")
+        st.markdown("### 🔬 Quản Lý Lịch Sự Kiện STEAM (Trường Học & Ngoại Khóa)")
+        st.caption("Nhập lịch sự kiện STEAM / Ngoại khóa trường học. Hệ thống sẽ tự động ghép vào lịch làm việc hàng ngày của các EC được phân công.")
 
         conn_st = get_conn()
         c_st = conn_st.cursor()
@@ -2687,39 +2681,6 @@ def render_admin_overview():
     st.divider()
 
     # ══════════════════════════════════════════════════════════════════════════
-    # MỤC 3B — THEO DÕI CHỈ TIÊU PHÒNG ĐÀO TẠO (CM — TÁI PHÍ & CHĂM SÓC)
-    # ══════════════════════════════════════════════════════════════════════════
-    st.markdown("### 🎓 Chỉ Tiêu Phòng Đào Tạo (CM — Tái Phí & Chăm Sóc)")
-    st.caption("Do BM trực tiếp theo dõi chỉ tiêu tái phí & học viên — Không thuộc diện báo cáo tác chiến hằng ngày của EC Tuyển Sinh.")
-    c.execute("""SELECT u.display_name, mt.position, mt.target_doanh_thu, mt.target_checkin_landau, mt.actual_doanh_thu, mt.note
-               FROM monthly_targets mt
-               JOIN users u ON mt.user_id=u.id
-               WHERE u.role='CM' AND mt.year_month=?
-               ORDER BY u.display_name""", (ym,))
-    cm_targets = c.fetchall()
-    if cm_targets:
-        cm_rows = []
-        for r in cm_targets:
-            cm_rows.append({
-                "Nhân sự Đào Tạo": r["display_name"],
-                "Vị trí": r["position"],
-                "Chỉ tiêu Doanh thu": f"{r['target_doanh_thu']:,.0f}K",
-                "Chỉ tiêu Học viên": f"{r['target_checkin_landau']} HV",
-                "Thực tế DT": f"{r['actual_doanh_thu']:,.0f}K",
-                "Ghi chú nhiệm vụ": r["note"] or "Tái phí & Chăm sóc học viên"
-            })
-        st.dataframe(pd.DataFrame(cm_rows), hide_index=True, use_container_width=True)
-        col_cm1, col_cm2 = st.columns(2)
-        total_cm_dt = sum(r["target_doanh_thu"] for r in cm_targets)
-        total_cm_hv = sum(r["target_checkin_landau"] for r in cm_targets)
-        col_cm1.metric("Tổng Chỉ Tiêu DT Đào Tạo", f"{total_cm_dt:,.0f}K ({total_cm_dt/1000:,.1f} Triệu)")
-        col_cm2.metric("Tổng Học Viên Phụ Trách", f"{total_cm_hv} HV")
-    else:
-        st.info("Chưa có chỉ tiêu cho Phòng Đào Tạo.")
-
-    st.divider()
-
-    # ══════════════════════════════════════════════════════════════════════════
     # MỤC 4 — KẾ HOẠCH BOOTH HIỆN DIỆN
     # ══════════════════════════════════════════════════════════════════════════
     st.markdown("### 4️⃣ Kế Hoạch Hiện Diện Booth Tháng Này")
@@ -2988,7 +2949,7 @@ def render_staff_management(is_ketoan=False):
     c.execute("SELECT id, username, display_name, role, is_active FROM users WHERE role NOT IN ('CM', 'cm_daotao') ORDER BY is_active DESC, role, display_name")
     all_staff = c.fetchall()
 
-    role_badge = {"Admin": "🔴 BM/Admin", "BM": "🔴 Giám Đốc (BM)", "ATL": "🟠 Trợ Lý (ATL)", "KeToan": "🔵 Kế Toán", "EC": "🟢 Tuyển Sinh (EC)", "CM": "🎓 Đào Tạo (CM)"}
+    role_badge = {"Admin": "🔴 BM/Admin", "BM": "🔴 Giám Đốc (BM)", "ATL": "🟠 Trợ Lý (ATL)", "KeToan": "🔵 Kế Toán", "EC": "🟢 Tuyển Sinh (EC)"}
 
     for u in all_staff:
         uid_cur = u["id"]
@@ -3001,10 +2962,10 @@ def render_staff_management(is_ketoan=False):
                 c_e1, c_e2 = st.columns(2)
                 edit_name = c_e1.text_input("Họ tên hiển thị:", value=u["display_name"])
                 
-                role_options = ["EC", "CM", "KeToan", "ATL", "BM", "Admin"]
+                role_options = ["EC", "KeToan", "ATL", "BM", "Admin"]
                 cur_role_idx = role_options.index(u["role"]) if u["role"] in role_options else 0
                 edit_role = c_e2.selectbox("Vai trò:", role_options, index=cur_role_idx,
-                                          format_func=lambda x: {"EC": "EC — Tuyển sinh", "CM": "CM — Đào tạo", "KeToan": "KeToan — Kế toán", "ATL": "ATL — Trợ lý", "BM": "BM — Giám đốc", "Admin": "Admin"}.get(x, x))
+                                          format_func=lambda x: {"EC": "EC — Tuyển sinh", "KeToan": "KeToan — Kế toán", "ATL": "ATL — Trợ lý", "BM": "BM — Giám đốc", "Admin": "Admin"}.get(x, x))
 
                 c_e3, c_e4 = st.columns(2)
                 reset_pass = c_e3.checkbox("Đặt lại mật khẩu về mặc định 123456", key=f"rst_{'kt' if is_ketoan else 'ad'}_{uid_cur}")
@@ -3418,26 +3379,20 @@ def render_monthly_progress():
         st.warning("Chưa có chỉ tiêu. Vào 'Lập Kế Hoạch Tháng' để nhập.")
         return
 
-    ts_targets = [t for t in targets if t["role"] != "CM"]
-    cm_targets = [t for t in targets if t["role"] == "CM"]
-
-    total_tgt_all = sum(t["target_doanh_thu"] for t in targets)
-    total_act_all = sum(t["actual_doanh_thu"] for t in targets)
-    pct_all = (total_act_all/total_tgt_all*100) if total_tgt_all>0 else 0
+    ts_targets = [t for t in targets if t["role"] not in ("CM", "cm_daotao")]
 
     total_tgt_ts = sum(t["target_doanh_thu"] for t in ts_targets)
     total_act_ts = sum(t["actual_doanh_thu"] for t in ts_targets)
-
-    total_tgt_cm = sum(t["target_doanh_thu"] for t in cm_targets)
-    total_act_cm = sum(t["actual_doanh_thu"] for t in cm_targets)
+    pct_ts = (total_act_ts/total_tgt_ts*100) if total_tgt_ts>0 else 0
+    total_hv_ts = sum(t["target_checkin_landau"] for t in ts_targets)
 
     col1, col2, col3 = st.columns(3)
-    col1.metric("Doanh Thu Toàn Chi Nhánh", f"{total_act_all:,.0f}K / {total_tgt_all:,.0f}K", f"{pct_all:.1f}%")
-    col2.metric("DT Phòng Tuyển Sinh (EC+BSA)", f"{total_act_ts:,.0f}K / {total_tgt_ts:,.0f}K")
-    col3.metric("DT Phòng Đào Tạo (Tái Phí CM)", f"{total_act_cm:,.0f}K / {total_tgt_cm:,.0f}K")
+    col1.metric("Doanh Thu Phòng Tuyển Sinh (PTS)", f"{total_act_ts:,.0f}K / {total_tgt_ts:,.0f}K", f"{pct_ts:.1f}%")
+    col2.metric("Chỉ Tiêu Học Viên Mới", f"{total_hv_ts} Học viên")
+    col3.metric("Nhân Sự Tác Chiến PTS", f"{len(ts_targets)} nhân sự (EC + BSA)")
 
     st.markdown("---")
-    st.markdown("#### 1️⃣ Phòng Tuyển Sinh (EC & Hỗ Trợ Tuyển Sinh)")
+    st.markdown("#### 🎯 Bảng Theo Dõi Chi Tiết Nhân Sự Tuyển Sinh (EC & BSA)")
     rows_ts = []
     for t in ts_targets:
         dt_p = (t["actual_doanh_thu"]/t["target_doanh_thu"]*100) if t["target_doanh_thu"]>0 else 0
@@ -3453,23 +3408,6 @@ def render_monthly_progress():
             "Cuộc gọi đã thực hiện": t["actual_cuoc_goi"]
         })
     st.dataframe(pd.DataFrame(rows_ts), hide_index=True, use_container_width=True)
-
-    st.markdown("#### 2️⃣ Phòng Đào Tạo (CM — Quản Trị Lớp & Tái Phí — BM Quản Lý)")
-    rows_cm = []
-    for t in cm_targets:
-        dt_p = (t["actual_doanh_thu"]/t["target_doanh_thu"]*100) if t["target_doanh_thu"]>0 else 0
-        warn = "🚨 <50%" if dt_p<50 else ("⚠️ <80%" if dt_p<80 else "🏆 Đạt!")
-        rows_cm.append({
-            "Nhân sự Đào Tạo": t["display_name"],
-            "Vị trí": t["position"],
-            "Chỉ tiêu Tái Phí(K)": f"{t['target_doanh_thu']:,.0f}K",
-            "Thực tế Tái Phí(K)": f"{t['actual_doanh_thu']:,.0f}K",
-            "% Đạt DT": f"{dt_p:.1f}%",
-            "Tình trạng": warn,
-            "Chỉ tiêu Học viên": f"{t['target_checkin_landau']} HV",
-            "Ghi chú": t["note"] or "Tái phí & Chăm sóc"
-        })
-    st.dataframe(pd.DataFrame(rows_cm), hide_index=True, use_container_width=True)
 
     st.markdown("---")
     st.markdown("### Cập Nhật Thực Tế")
@@ -3697,48 +3635,6 @@ def render_change_password_required():
                 st.rerun()
 
 
-# ─────────────────────────── PHÒNG ĐÀO TẠO (CM) VIEW ─────────────────────────
-
-def render_cm_view():
-    uid = st.session_state["user_id"]
-    name = st.session_state["display_name"]
-    ym = get_ym()
-    st.title(f"🎓 Phòng Đào Tạo — {name}")
-    st.caption("Theo dõi chỉ tiêu doanh thu tái phí và chăm sóc học viên chi nhánh.")
-
-    conn = get_conn()
-    c = conn.cursor()
-    c.execute("SELECT * FROM monthly_targets WHERE user_id=? AND year_month=?", (uid, ym))
-    tgt = c.fetchone()
-
-    # Lịch STEAM
-    c.execute("SELECT * FROM steam_schedule WHERE event_date >= ? ORDER BY event_date ASC", (get_today(),))
-    steam_list = c.fetchall()
-    conn.close()
-
-    if tgt:
-        st.markdown("### 🎯 Chỉ Tiêu Tái Phí Tháng Của Bạn")
-        c1, c2, c3 = st.columns(3)
-        c1.metric("Chỉ Tiêu Doanh Thu Tái Phí", f"{tgt['target_doanh_thu']:,.0f}K ({tgt['target_doanh_thu']/1000:,.1f} Triệu)")
-        c2.metric("Chỉ Tiêu Học Viên Tái Phí", f"{tgt['target_checkin_landau']} Học viên")
-        c3.metric("Doanh Thu Đã Đạt", f"{tgt['actual_doanh_thu']:,.0f}K")
-
-    st.markdown("---")
-    st.markdown("### 🔗 Liên Kết Dữ Liệu Phòng Đào Tạo")
-    st.markdown(f"""
-    <div style="background:#e8f4fd;border-left:5px solid #0070C0;border-radius:8px;padding:14px 18px;margin-bottom:14px">
-    <b>📊 File Quản Lý Phòng Đào Tạo (Danh Sách Học Viên 2026, Tái Phí, Hết Phí):</b><br>
-    <a href="https://docs.google.com/spreadsheets/d/15nKA3esX2kAdP9TBT4oWTNr9-Kef7SrmHQfB1zfQSyg/edit?gid=774645173#gid=774645173" target="_blank" style="color:#0070C0;font-weight:700">
-    🔗 Mở Google Sheets Đào Tạo BMT &rarr;</a>
-    </div>
-    """, unsafe_allow_html=True)
-
-    if steam_list:
-        with st.expander("🔬 Lịch Sự Kiện STEAM Toàn Chi Nhánh", expanded=True):
-            for s in steam_list:
-                st.markdown(f"• 📅 **{s['event_date']}** ({s['start_time']}–{s['end_time']}): **{s['title']}** tại *{s['school_name'] or s['location']}*")
-
-
 
 # ─────────────────────────── ROUTER ───────────────────────────────────────────
 
@@ -3847,7 +3743,5 @@ elif role == "KeToan":
     render_ketoan()
 elif role == "EC":
     render_ec()
-elif role == "CM":
-    render_cm_view()
 else:
     render_ec()
