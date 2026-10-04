@@ -603,7 +603,10 @@ def login():
     st.markdown(f"""
     <div translate="no" style="text-align:center; padding: 20px 0 15px 0;">
         {logo_img_html}
-        <h2 style="color:#2D3190; margin:8px 0 4px 0; font-weight:800; font-size:1.6rem; letter-spacing:0.5px;">OCEAN EDU BUÔN MA THUỘT</h2>
+        <h2 style="margin:8px 0 6px 0; font-weight:900; line-height:1.25;">
+            <span style="display:block; color:#2D3190; font-size:1.65rem; letter-spacing:1px; white-space:nowrap;">OCEAN EDU</span>
+            <span style="display:block; color:#00AEEF; font-size:1.35rem; letter-spacing:0.5px; white-space:nowrap; margin-top:2px;">BUÔN MA THUỘT</span>
+        </h2>
         <div style="color:#64748b; font-size:0.95rem; font-weight:600; letter-spacing:0.5px;">HỆ THỐNG QUẢN TRỊ KPI & VẬN HÀNH PTS</div>
     </div>
     """, unsafe_allow_html=True)
@@ -3681,13 +3684,19 @@ def render_cm_view():
 
 # CSS Global — màu Ocean Edu
 st.markdown(f"""<style>
-/* Ẩn hoàn toàn thanh công cụ Streamlit (Share, Edit, GitHub, Star, Footer) cho người dùng */
+/* Ẩn hoàn toàn thanh công cụ Streamlit (Share, Edit, GitHub, Star, Footer, Badge) cho người dùng */
 #MainMenu {visibility: hidden; display: none !important;}
 header {visibility: hidden; display: none !important;}
 footer {visibility: hidden; display: none !important;}
 [data-testid="stToolbar"] {visibility: hidden; display: none !important;}
 [data-testid="stDecoration"] {visibility: hidden; display: none !important;}
 [data-testid="stStatusWidget"] {visibility: hidden; display: none !important;}
+[data-testid="stAppDeployButton"] {visibility: hidden; display: none !important;}
+.viewerBadge_container__r5tak {display: none !important;}
+.viewerBadge_link__qRIco {display: none !important;}
+[class*="viewerBadge"] {display: none !important;}
+[class*="profileBadge"] {display: none !important;}
+[class*="manageApp"] {display: none !important;}
 
 /* Nút chính dùng màu xanh Ocean Edu */
 .stButton > button[kind="primary"] {{
