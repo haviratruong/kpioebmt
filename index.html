@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ocean Edu BMT — Cổng Tài Liệu & App KPI</title>
+<link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: #f8fafc;
+    color: #1e293b;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+  }
+  .portal-card {
+    background: white;
+    max-width: 520px;
+    width: 100%;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    overflow: hidden;
+    border: 1px solid #e2e8f0;
+  }
+  .portal-header {
+    background: linear-gradient(135deg, #2D3190 0%, #1a1f6e 100%);
+    padding: 30px 24px;
+    text-align: center;
+    color: white;
+  }
+  .portal-header h1 {
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+  }
+  .portal-header p {
+    font-size: 0.88rem;
+    color: #93c5fd;
+    font-weight: 600;
+  }
+  .portal-body {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .btn-link {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 18px;
+    border-radius: 12px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    border: 1px solid #e2e8f0;
+  }
+  .btn-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+  }
+  .btn-main {
+    background: linear-gradient(135deg, #2D3190 0%, #00AEEF 100%);
+    color: white;
+    border: none;
+  }
+  .btn-main .title { color: white; font-weight: 700; font-size: 1.05rem; }
+  .btn-main .desc { color: #e0f2fe; font-size: 0.8rem; }
+  .btn-sub {
+    background: #f8fafc;
+    color: #1e293b;
+  }
+  .btn-sub:hover {
+    background: #f1f5f9;
+    border-color: #cbd5e1;
+  }
+  .btn-sub .title { color: #1e293b; font-weight: 700; font-size: 0.98rem; }
+  .btn-sub .desc { color: #64748b; font-size: 0.8rem; }
+  .icon-box {
+    font-size: 1.6rem;
+    min-width: 40px;
+    text-align: center;
+  }
+  .footer-text {
+    text-align: center;
+    padding: 14px;
+    font-size: 0.78rem;
+    color: #94a3b8;
+    border-top: 1px solid #f1f5f9;
+  }
+</style>
+</head>
+<body>
+
+<div class="portal-card">
+  <div class="portal-header">
+    <h1>OCEAN EDU BUÔN MA THUỘT</h1>
+    <p>HỆ THỐNG QUẢN TRỊ KPI & VẬN HÀNH PTS</p>
+  </div>
+
+  <div class="portal-body">
+    <!-- NÚT 1: VÀO APP -->
+    <a href="https://kpioebmt.streamlit.app" target="_blank" class="btn-link btn-main">
+      <div class="icon-box">🚀</div>
+      <div>
+        <div class="title">Vào App KPI Làm Việc</div>
+        <div class="desc">Điểm danh, nộp báo cáo ca, KHTN, cuộc gọi >60s</div>
+      </div>
+    </a>
+
+    <!-- NÚT 2: CẨM NANG EC -->
+    <a href="cam_nang_huong_dan_ec.html" class="btn-link btn-sub" style="border-left: 5px solid #2D3190;">
+      <div class="icon-box">📖</div>
+      <div>
+        <div class="title">Cẩm Nang Hướng Dẫn Cho EC</div>
+        <div class="desc">Quy trình tác chiến ngày, deadline & định mức 488 cuộc</div>
+      </div>
+    </a>
+
+    <!-- NÚT 3: CẨM NANG KẾ TOÁN -->
+    <a href="huong_dan_ketoan_hong.html" class="btn-link btn-sub" style="border-left: 5px solid #00AEEF;">
+      <div class="icon-box">💰</div>
+      <div>
+        <div class="title">Cẩm Nang Kế Toán & BSA (Hồng)</div>
+        <div class="desc">Chia ca tuần, quỹ vi phạm, 6 Booth & chỉ tiêu cá nhân</div>
+      </div>
+    </a>
+
+    <!-- NÚT 4: QUY CHẾ VẬN HÀNH -->
+    <a href="tai_lieu_he_thong_kpi.html" class="btn-link btn-sub" style="border-left: 5px solid #64748b;">
+      <div class="icon-box">🏛️</div>
+      <div>
+        <div class="title">Tài Liệu Toàn Diện & Quy Chế Phạt</div>
+        <div class="desc">Kiến trúc 15 quy tắc KPI và triết lý vận hành chi nhánh</div>
+      </div>
+    </a>
+  </div>
+
+  <div class="footer-text">
+    Ocean Edu Buôn Ma Thuột — Cổng Vận Hành Kỷ Luật & KPI 2026
+  </div>
+</div>
+
+</body>
+</html>
