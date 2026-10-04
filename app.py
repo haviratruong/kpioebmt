@@ -687,6 +687,41 @@ def submit_report(rule_code, rule_name, deadline, content, extra_kpi=None, giai_
         st.success(f"✅ Đã nộp '{rule_name}' lúc {now}!")
     return True
 
+# ─────────────────────────── USER GUIDE ROUTER ─────────────────────────────────
+
+def get_user_guide_info(role):
+    """Trả về cẩm nang hướng dẫn riêng biệt theo đúng chức danh / vai trò của người dùng"""
+    if role == 'EC':
+        return {
+            "title": "📖 Cẩm Nang Tác Chiến EC",
+            "url": "https://haviratruong.github.io/kpioebmt/cam_nang_huong_dan_ec.html",
+            "desc": "Quy trình ca, deadline & định mức 488 cuộc"
+        }
+    elif role == 'KeToan':
+        return {
+            "title": "📖 Cẩm Nang Kế Toán & BSA",
+            "url": "https://haviratruong.github.io/kpioebmt/huong_dan_ketoan_hong.html",
+            "desc": "Chia ca tuần, quỹ vi phạm & 6 Booth"
+        }
+    elif role in ('Admin', 'BM', 'ATL'):
+        return {
+            "title": "📖 Quy Chế & Điều Hành Chi Nhánh",
+            "url": "https://haviratruong.github.io/kpioebmt/tai_lieu_he_thong_kpi.html",
+            "desc": "15 quy tắc KPI & chế tài vi phạm"
+        }
+    elif role in ('CM', 'cm_daotao'):
+        return {
+            "title": "📖 File Quản Lý Phòng Đào Tạo",
+            "url": "https://docs.google.com/spreadsheets/d/15nKA3esX2kAdP9TBT4oWTNr9-Kef7SrmHQfB1zfQSyg/edit?gid=774645173#gid=774645173",
+            "desc": "File Quản lý lớp, tái phí & học viên"
+        }
+    return {
+        "title": "📖 Cổng Hướng Dẫn Chi Nhánh",
+        "url": "https://haviratruong.github.io/kpioebmt/",
+        "desc": "Toàn bộ tài liệu & cẩm nang chi nhánh"
+    }
+
+
 # ─────────────────────────── DEADLINE TICKER ──────────────────────────────────
 
 def render_deadline_ticker():
@@ -705,12 +740,18 @@ def render_deadline_ticker():
     if not daily_tasks:
         return
 
-    logo_html = f'<img src="{_LOGO_SRC}" style="height:48px;background:white;border-radius:6px;padding:4px 8px">' if _LOGO_SRC else "🌊"
-    st.markdown(f"""<div translate="no" style="background:{OE_BLUE_DARK};padding:10px 20px;border-radius:10px;margin-bottom:12px;display:flex;align-items:center;gap:16px">
+    logo_html = f'<img src="{_LOGO_SRC}" style="height:42px;background:white;border-radius:6px;padding:4px 8px">' if _LOGO_SRC else "🌊"
+    g_info = get_user_guide_info(st.session_state.get('role', ''))
+    st.markdown(f"""<div translate="no" style="background:{OE_BLUE_DARK};padding:10px 18px;border-radius:10px;margin-bottom:12px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px">
+<div style="display:flex;align-items:center;gap:12px">
 {logo_html}
-<span style="color:{OE_WHITE};font-size:1rem;font-weight:700" translate="no">
+<span style="color:{OE_WHITE};font-size:0.95rem;font-weight:700" translate="no">
 Chi nhánh Buôn Ma Thuột &nbsp;|&nbsp; 📅 {datetime.now().strftime('%A, %d/%m/%Y')} &nbsp;|&nbsp; 🕐 {datetime.now().strftime('%H:%M')}
 </span>
+</div>
+<a href="{g_info['url']}" target="_blank" style="background:rgba(255,255,255,0.18); border:1px solid rgba(255,255,255,0.35); border-radius:6px; padding:6px 14px; color:white; text-decoration:none; font-weight:700; font-size:0.82rem; white-space:nowrap;">
+{g_info['title']} ↗
+</a>
 </div>""", unsafe_allow_html=True)
 
 
@@ -2374,6 +2415,15 @@ def render_admin():
     tab_atl_title = "👩‍💼 Báo Cáo ATL" if has_atl else "📋 Báo Cáo Điều Hành (Kiêm ATL)"
 
     st.title(f"📊 Dashboard Quản Trị — {branch_name}")
+    g_info_adm = get_user_guide_info('Admin')
+    st.markdown(f"""
+    <div style="background:#f8fafc; border:1px solid #cbd5e1; border-radius:8px; padding:10px 16px; margin:8px 0 14px 0; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+        <span style="font-size:0.9rem; color:#334155; font-weight:600;">🏛️ Tra cứu tài liệu quy chế vận hành, 15 quy tắc KPI & chế tài phạt chi nhánh:</span>
+        <a href="{g_info_adm['url']}" target="_blank" style="background:#2D3190; color:white; font-weight:700; font-size:0.82rem; padding:6px 14px; border-radius:6px; text-decoration:none;">
+            Mở Quy Chế Tab Riêng ↗
+        </a>
+    </div>
+    """, unsafe_allow_html=True)
     tab1, tab2, tab3, tab4, tab5, tab6, tab7, tab8 = st.tabs([
         "🗺️ Tổng Quan Ngày", "📅 Lịch & STEAM", tab_atl_title,
         "📆 Lập Kế Hoạch Tháng", "📈 Tiến Độ Tháng",
@@ -3517,6 +3567,16 @@ def render_ketoan():
 
     st.title("💰 Kế Toán & BSA — Quản Lý Chi Nhánh & Chuyên Môn")
     st.caption("Kế toán chi nhánh & Chuyên viên BSA: Điều phối lịch ca, quỹ vi phạm, 6 Booth và chỉ tiêu cá nhân.")
+    
+    g_info_kt = get_user_guide_info('KeToan')
+    st.markdown(f"""
+    <div style="background:#eff6ff; border:1px solid #bfdbfe; border-radius:8px; padding:10px 16px; margin:8px 0 14px 0; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+        <span style="font-size:0.9rem; color:#1e40af; font-weight:600;">📖 Bạn cần xem hướng dẫn công việc Kế Toán & BSA Hồng?</span>
+        <a href="{g_info_kt['url']}" target="_blank" style="background:#2563eb; color:white; font-weight:700; font-size:0.82rem; padding:6px 14px; border-radius:6px; text-decoration:none;">
+            Mở Cẩm Nang Tab Riêng ↗
+        </a>
+    </div>
+    """, unsafe_allow_html=True)
 
     tab1, tab2, tab3, tab4, tab5, tab6, tab7 = st.tabs([
         "📅 Chia Lịch Ca & STEAM", 
@@ -3752,13 +3812,23 @@ with st.sidebar:
 Buôn Ma Thuột — Hệ thống KPI nội bộ
 </div>""", unsafe_allow_html=True)
 
-    st.markdown(f"""<div style="padding:12px 8px 4px 8px">
+    st.markdown(f"""<div style="padding:12px 8px 8px 8px">
 <div style="font-weight:700;font-size:0.95rem">👤 {st.session_state.get('display_name', '')}</div>
 <div style="font-size:0.78rem;opacity:.8">Vai trò: {st.session_state.get('role', '')}</div>
 <div style="font-size:0.75rem;opacity:.7">{datetime.now().strftime('%d/%m/%Y  %H:%M')}</div>
 </div>""", unsafe_allow_html=True)
 
-    st.markdown("<div style='height:16px'></div>", unsafe_allow_html=True)
+    # Cẩm nang hướng dẫn riêng biệt theo vai trò (Mở tab riêng để vừa nhìn vừa làm)
+    g_info_sb = get_user_guide_info(st.session_state.get('role', ''))
+    st.markdown(f"""
+    <div style="padding: 4px 6px 12px 6px;">
+        <a href="{g_info_sb['url']}" target="_blank" style="display:block; background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.3); border-radius:10px; padding:12px; text-decoration:none; color:white; transition:all 0.2s;">
+            <div style="font-weight:700; font-size:0.9rem; color:#ffffff; margin-bottom:3px;">{g_info_sb['title']}</div>
+            <div style="font-size:0.75rem; color:#bae6fd; margin-bottom:6px;">{g_info_sb['desc']}</div>
+            <div style="font-size:0.72rem; color:#fef08a; font-weight:700;">↗ Mở tab riêng vừa xem vừa làm</div>
+        </a>
+    </div>
+    """, unsafe_allow_html=True)
 
     if st.button("🚪 Đăng Xuất Khỏi Hệ Thống", use_container_width=True):
         for k in ["logged_in", "username", "role", "user_id", "display_name", "is_default_password"]:
