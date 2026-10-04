@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ocean Edu BMT — Câu Chuyện Về Một Ngày Làm Việc</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Segoe UI', Arial, sans-serif; background: #fafafa; color: #1a1a2e; line-height: 1.75; }
+
+/* ── HERO ─────────────────────────────── */
+.hero {
+  background: linear-gradient(135deg,#2D3190 0%,#00AEEF 100%);
+  color: white; padding: 56px 48px 48px; text-align: center;
+}
+.hero h1 { font-size: 2.2rem; font-weight: 900; letter-spacing: -0.5px; }
+.hero .sub { font-size: 1.1rem; opacity: .85; margin-top: 10px; }
+.hero .tagline {
+  display: inline-block; background: rgba(255,255,255,.15);
+  border: 2px solid rgba(255,255,255,.4);
+  border-radius: 50px; padding: 10px 28px;
+  font-size: 1rem; font-weight: 700; margin-top: 24px;
+}
+
+/* ── LAYOUT ───────────────────────────── */
+.wrap { max-width: 900px; margin: 0 auto; padding: 0 24px 60px; }
+
+/* ── SECTION TITLE ────────────────────── */
+.sec-title {
+  font-size: 1.4rem; font-weight: 900; color: #2D3190;
+  margin: 52px 0 20px; padding-bottom: 10px;
+  border-bottom: 4px solid #00AEEF;
+}
+
+/* ── PAIN/GAIN CARDS ──────────────────── */
+.compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 32px; }
+.pain-card {
+  background: #fff5f5; border: 2px solid #ffcdd2; border-radius: 12px;
+  padding: 20px 22px;
+}
+.gain-card {
+  background: #f0fff4; border: 2px solid #a5d6a7; border-radius: 12px;
+  padding: 20px 22px;
+}
+.pain-card h4 { color: #c62828; font-size: 1rem; margin-bottom: 10px; }
+.gain-card h4 { color: #1b5e20; font-size: 1rem; margin-bottom: 10px; }
+.pain-card p, .gain-card p { font-size: .9rem; color: #444; line-height: 1.7; }
+
+/* ── STORY STEPS ──────────────────────── */
+.story { display: flex; flex-direction: column; gap: 0; }
+.story-step {
+  display: flex; gap: 20px; position: relative;
+}
+.story-step:not(:last-child)::after {
+  content: ''; position: absolute; left: 27px; top: 58px;
+  width: 3px; height: calc(100% - 20px);
+  background: #e0e0e0;
+}
+.story-icon {
+  width: 56px; height: 56px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.5rem; flex-shrink: 0; z-index: 1;
+  margin-bottom: 20px;
+}
+.story-content { padding-bottom: 28px; }
+.story-content h4 { font-size: 1rem; font-weight: 800; margin-bottom: 6px; }
+.story-content p { font-size: .9rem; color: #555; }
+
+/* ── QUOTE ────────────────────────────── */
+.quote {
+  background: linear-gradient(135deg,#e8eaf6,#e3f2fd);
+  border-left: 6px solid #2D3190; border-radius: 10px;
+  padding: 22px 28px; margin: 32px 0; font-size: 1.05rem;
+  font-style: italic; color: #1a237e; font-weight: 600;
+}
+
+/* ── FEATURE PILLS ────────────────────── */
+.pills { display: flex; flex-wrap: wrap; gap: 10px; margin: 16px 0; }
+.pill {
+  background: #2D3190; color: white;
+  border-radius: 50px; padding: 7px 18px;
+  font-size: .85rem; font-weight: 700;
+}
+.pill.light { background: #e8eaf6; color: #2D3190; }
+
+/* ── ROLE BLOCKS ──────────────────────── */
+.roles { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin: 24px 0; }
+.role-block { border-radius: 12px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,.07); }
+.role-head { padding: 14px 18px; color: white; font-weight: 800; font-size: .95rem; }
+.role-body { background: white; padding: 14px 18px; font-size: .86rem; color: #444; line-height: 1.8; }
+
+/* ── NUMBERS ──────────────────────────── */
+.numbers { display: flex; gap: 12px; flex-wrap: wrap; margin: 20px 0; }
+.num-card {
+  flex: 1; min-width: 130px; background: white; border-radius: 12px;
+  padding: 18px 16px; text-align: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,.07);
+  border-top: 4px solid #00AEEF;
+}
+.num-card .n { font-size: 2rem; font-weight: 900; color: #2D3190; }
+.num-card .l { font-size: .78rem; color: #666; margin-top: 4px; }
+
+/* ── TIMELINE ─────────────────────────── */
+.timeline { margin: 24px 0; }
+.tl-row {
+  display: flex; gap: 16px; margin-bottom: 12px;
+  align-items: flex-start;
+}
+.tl-time {
+  min-width: 70px; font-weight: 800; font-size: .9rem;
+  color: #2D3190; padding-top: 2px;
+}
+.tl-content {
+  flex: 1; background: white; border-radius: 8px;
+  padding: 10px 16px; font-size: .88rem; color: #444;
+  border-left: 4px solid #00AEEF;
+  box-shadow: 0 1px 4px rgba(0,0,0,.05);
+}
+.tl-content b { color: #1a237e; }
+
+/* ── ALERT BOXES ──────────────────────── */
+.alert-box {
+  border-radius: 10px; padding: 18px 22px; margin: 20px 0;
+  font-size: .95rem; line-height: 1.7;
+}
+.alert-info    { background: #e3f2fd; border-left: 5px solid #1565c0; }
+.alert-success { background: #e8f5e9; border-left: 5px solid #2e7d32; }
+.alert-warn    { background: #fff8e1; border-left: 5px solid #f9a825; }
+
+/* ── FOOTER ───────────────────────────── */
+.footer {
+  background: #2D3190; color: rgba(255,255,255,.75);
+  text-align: center; padding: 28px; font-size: .85rem;
+}
+
+@media (max-width: 640px) {
+  .compare-grid, .roles { grid-template-columns: 1fr; }
+  .hero h1 { font-size: 1.5rem; }
+  .hero { padding: 36px 20px; }
+}
+@media print {
+  .hero, .pain-card, .gain-card, .num-card { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ HERO ═══════════════════════════════════════════════════════════════ -->
+<div class="hero">
+  <h1>🌊 Câu Chuyện Về Một Ngày Làm Việc Tại Ocean Edu BMT</h1>
+  <div class="sub">Dành cho cô Hương, Thủy, Coach và tất cả mọi người — không cần biết công nghệ</div>
+  <div class="tagline">📱 Một app nhỏ. Một ngày bình yên hơn. Một team mạnh hơn.</div>
+</div>
+
+<div class="wrap">
+
+<!-- ── BANNER LIÊN KẾT CẨM NANG HƯỚNG DẪN EC ───────────────────────── -->
+<div style="background:#eff6ff; border:2px solid #3b82f6; border-radius:12px; padding:16px 20px; margin:24px 0; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;">
+  <div>
+    <b style="color:#1d4ed8; font-size:1.05rem">📖 Cẩm Nang Hướng Dẫn Sử Dụng Dành Cho Chuyên Viên Tuyển Sinh (EC):</b><br>
+    <span style="color:#4b5563; font-size:0.9rem">Tài liệu chuẩn hóa các mốc giờ làm việc trong ngày, định mức 20 cuộc gọi/ngày, 488 cuộc/tháng, 10 Ebook, 17 QR và quy trình nộp báo cáo.</span>
+  </div>
+  <a href="cam_nang_huong_dan_ec.html" target="_blank" style="background:#2D3190; color:white; padding:8px 20px; border-radius:8px; text-decoration:none; font-weight:700; font-size:0.9rem;">Mở Cẩm Nang Hướng Dẫn EC &rarr;</a>
+</div>
+
+<!-- ═══ PHẦN 1: BÀI TOÁN THỜI GIAN ════════════════════════════════════════ -->
+<div class="sec-title">🔴 NÚT THẮT HIỆN TẠI — Chúng Ta Đang Bị Lấy Cắp Thời Gian Như Thế Nào?</div>
+
+<div class="alert-warn">
+  <b>Sự thật về việc báo cáo thủ công qua Zalo:</b> Khổ nhất không phải là viết báo cáo, mà là <b>những khoảng "thời gian ẩn"</b> bị lãng phí cho việc nhớ, nhắc, và dò tìm.
+</div>
+
+<div class="compare-grid">
+  <div class="pain-card">
+    <h4>⏳ Mất thời gian NHỚ và NHẮC (BM & ATL)</h4>
+    <p>Quản lý phải dùng "bộ nhớ cá nhân" để nhớ xem ai ca nào, ai chưa nộp báo cáo. Khởi đầu ngày mới bằng việc hối thúc trên Zalo: <i>"Báo cáo đầu ca đi các em!"</i>. Thay vì tập trung làm chiến lược, người quản lý lại biến thành <b>"người đuổi gà"</b>.</p>
+  </div>
+  <div class="pain-card">
+    <h4>⏳ Mất thời gian CANH GIỜ (EC)</h4>
+    <p>Các cô EC luôn trong trạng thái phấp phỏng sợ trễ deadline, sợ bị phạt. Đang tập trung gọi khách lại phải ngó đồng hồ, dừng lại soạn tin nhắn gửi Zalo. Mất tập trung, đứt mạch chốt sale, <b>lấy đi thời gian vàng ngọc tiếp cận khách hàng</b>.</p>
+  </div>
+  <div class="pain-card">
+    <h4>⏳ Mất thời gian TỔNG HỢP (BM & Vùng)</h4>
+    <p>Tin nhắn trôi tuột. Khi Vùng hỏi số liệu đột xuất, hay BM cần biết tiến độ, không ai nắm ngay được. BM phải mất 30–60 phút ngồi <b>lội tin nhắn, cộng tay từng con số</b> mới ra được kết quả thực tế.</p>
+  </div>
+  <div class="pain-card">
+    <h4>⏳ Mất thời gian CHECK SOÁT (Kế Toán)</h4>
+    <p>Nỗi ám ảnh cuối tháng: Kế Toán phải dò lại hàng trăm tin nhắn Zalo để đếm xem ai trễ, ai thiếu. Tính tay dễ sót, thu phạt dễ gây tranh cãi. Việc kiểm tra và thu quỹ biến thành một khâu <b>căng thẳng và mệt mỏi, tốn kém thời gian</b>.</p>
+  </div>
+</div>
+
+<div class="quote" style="text-align:center;font-size:1.05rem;margin-bottom:40px;">
+  "Mọi người đều tất bật làm việc... của người khác.<br>
+  BM làm thay việc nhắc nhở. Kế toán làm thay máy tính. EC làm thay báo thức.<br>
+  <b>Chúng ta cần một công cụ gánh vác phần 'rối rắm' này, để trả lại thời gian cho con người.</b>"
+</div>
+
+<!-- ═══ PHẦN 2: APP LÀM GÌ — GIẢI THÍCH KHÔNG KỸ THUẬT ════════════════════ -->
+<div class="sec-title">🟢 APP NÀY LÀM GÌ — Giải Thích Đơn Giản Nhất Có Thể</div>
+
+<div class="alert-info">
+  💡 <b>Cách hiểu đơn giản nhất:</b><br>
+  Hãy tưởng tượng bạn có một <b>người trợ lý làm việc 24/7</b>, không cần lương, không cần ngủ.
+  Người trợ lý đó biết mỗi cô làm ca gì hôm nay, deadline báo cáo mấy giờ,
+  còn thiếu bao nhiêu cuộc gọi, bao nhiêu Ebook, KH nào đang cần follow.
+  Và nó tự hiển thị tất cả lên màn hình — không cần ai hỏi, không cần ai nhắc.
+</div>
+
+<div class="story">
+
+  <div class="story-step">
+    <div class="story-icon" style="background:#e8f5e9">🗓️</div>
+    <div class="story-content">
+      <h4 style="color:#1b5e20">Cô Hồng nhập lịch ca một lần — cả tuần xong</h4>
+      <p>Thay vì nhắn Zalo từng người "hôm nay em làm ca gì", cô Hồng mở app,
+      nhập lịch ca cả tuần cho 9 người trong 10 phút.
+      Từ đó, app biết: "Cô Trâm Anh hôm nay P3, vào ca 13h, deadline BC đầu ca là 13h00."
+      Mọi người tự vào xem — không cần hỏi nữa.</p>
+    </div>
+  </div>
+
+  <div class="story-step">
+    <div class="story-icon" style="background:#e3f2fd">📋</div>
+    <div class="story-content">
+      <h4 style="color:#1565c0">Mỗi cô EC mở app thấy ngay hôm nay mình phải làm gì</h4>
+      <p>Giống như một tờ giấy checklist cá nhân — nhưng thông minh hơn.
+      Nó tự hiển thị: "BC Đầu Ca — deadline 13:00 🔴 Chưa nộp."
+      Khi cô điền xong, thẻ đó chuyển xanh. Không cần ai nhắc.
+      Ai chưa làm thì thẻ đó đỏ mãi — cô tự thấy, tự lo.</p>
+    </div>
+  </div>
+
+  <div class="story-step">
+    <div class="story-icon" style="background:#f3f0ff">⏰</div>
+    <div class="story-content">
+      <h4 style="color:#4a148c">Trễ 1 phút → app tự ghi vi phạm — không cần ai phán xét</h4>
+      <p>Deadline 13h00. Cô Trâm Anh nộp lúc 13h05 — app tự ghi:
+      "Vi phạm BC Đầu Ca: -50.000đ." Không cần cô Hương hỏi, không cần họp,
+      không cần ai phải nói khó xử. Cuối tháng cô Hồng xem danh sách và thu tiền.
+      Hệ thống công bằng — ai cũng hiểu trước, không ai oan.</p>
+    </div>
+  </div>
+
+  <div class="story-step">
+    <div class="story-icon" style="background:#fff8e1">📊</div>
+    <div class="story-content">
+      <h4 style="color:#e65100">Cô Hương mở app — thấy ngay toàn bộ số liệu</h4>
+      <p>Cô Hương không cần hỏi ai nữa. Mở tab "Tổng Quan Ngày":
+      Cô Dung hôm nay gọi 8 cuộc — chưa đủ ⚠️.
+      KH của cô Trâm Anh: 3 người sắp chốt, ngày hẹn tuần này.
+      Ebook tháng này: Dung còn thiếu 3 cuốn.
+      Tất cả hiện ra trong 30 giây — cô có thể trả lời Vùng ngay lập tức.</p>
+    </div>
+  </div>
+
+  <div class="story-step" style="border:none">
+    <div class="story-icon" style="background:#fce4ec">💰</div>
+    <div class="story-content">
+      <h4 style="color:#c62828">Cuối tháng: cô Hồng chỉ cần tick "Đã thu"</h4>
+      <p>App đã tính hết: ai vi phạm gì, bao nhiêu lần, bao nhiêu tiền.
+      Cô Hồng mở tab Quỹ Vi Phạm, thu tiền, tick "Đã thu."
+      Tổng quỹ tháng hiện tự động. Không cần lật Zalo, không cần tính tay.</p>
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══ PHẦN 3: MỘT NGÀY CỤ THỂ ════════════════════════════════════════════ -->
+<div class="sec-title">🌅 MỘT NGÀY LÀM VIỆC HIỆU QUẢ VỚI APP</div>
+
+<h3 style="color:#1b5e20;margin:20px 0 12px">✅ Khi Các Cô Tự Chủ Trong Công Việc</h3>
+<div class="timeline">
+  <div class="tl-row"><div class="tl-time">08:30</div><div class="tl-content">Cô Hương mở app — thấy ngay ai đã/chưa nộp BC đầu ca. <b>Không cần nhắn Zalo.</b></div></div>
+  <div class="tl-row"><div class="tl-time">09:00</div><div class="tl-content"><b>App tự đánh dấu đỏ</b> ai nộp trễ, ghi vi phạm. Cô Hương chỉ cần xem.</div></div>
+  <div class="tl-row"><div class="tl-time">12:00</div><div class="tl-content">Cô Hồng không cần tổng hợp — số liệu <b>đã cộng tự động trong app.</b></div></div>
+  <div class="tl-row"><div class="tl-time">16:30</div><div class="tl-content">Tất cả EC thấy nhắc nhở trong app: <b>"📸 Chụp ảnh KHTN → gửi nhóm Zalo OE"</b></div></div>
+  <div class="tl-row"><div class="tl-time">21:00</div><div class="tl-content">App tự ghi ai nộp BC cuối ca đúng giờ, ai trễ. <b>Không cần ai đợi, ai hối.</b></div></div>
+  <div class="tl-row"><div class="tl-time">21:05</div><div class="tl-content">Cô Hương mở tab Tổng Quan — <b>đọc số liệu ngày, sẵn sàng báo cáo Vùng bất cứ lúc nào.</b></div></div>
+</div>
+
+<!-- ═══ PHẦN 4: AI ĐƯỢC GÌ ═══════════════════════════════════════════════════ -->
+<div class="sec-title">🎁 AI ĐƯỢC GÌ TỪ APP NÀY?</div>
+
+<div class="roles">
+  <div class="role-block">
+    <div class="role-head" style="background:#C62828">🔴 Cô Hương (BM)</div>
+    <div class="role-body">
+      ✅ Không cần hỏi — mở app thấy hết<br>
+      ✅ Có số liệu thật để báo Vùng ngay<br>
+      ✅ Biết KH nào sắp chốt, cô nào cần hỗ trợ<br>
+      ✅ Không phải làm trọng tài tranh luận phạt<br>
+      <b style="color:#c62828">Tiết kiệm: ~45 phút/ngày</b>
+    </div>
+  </div>
+  <div class="role-block">
+    <div class="role-head" style="background:#E65100">🟠 Cô Thủy (ATL)</div>
+    <div class="role-body">
+      ✅ Không tổng hợp báo cáo thủ công nữa<br>
+      ✅ Biết team đang đến đâu so với chỉ tiêu<br>
+      ✅ Phân công duty STEAM rõ ràng, xoay vòng đúng<br>
+      ✅ Có thời gian thực sự huấn luyện EC<br>
+      <b style="color:#e65100">Tiết kiệm: ~30 phút/ngày</b>
+    </div>
+  </div>
+  <div class="role-block">
+    <div class="role-head" style="background:#1B5E20">🟢 Các cô EC</div>
+    <div class="role-body">
+      ✅ Tự biết hôm nay cần làm gì, mấy giờ<br>
+      ✅ Không bị hối — tự nhìn checklist mà làm<br>
+      ✅ Biết KPI mình đang đến đâu — tự điều chỉnh<br>
+      ✅ Không bị phạt oan vì deadline không rõ<br>
+      <b style="color:#1b5e20">Tiết kiệm: ~10 phút/ngày</b>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ PHẦN 5: CỤ THỂ MỖI NGƯỜI LÀM GÌ ═════════════════════════════════ -->
+<div class="sec-title">📱 CỤ THỂ — Mỗi Người Mở App Lên Sẽ Thấy Gì, Làm Gì?</div>
+
+<!-- ── BM Hương ──────────────────────────────────── -->
+<div style="background:#fff5f5; border:2px solid #ef9a9a; border-radius:14px; padding:22px 26px; margin-bottom:18px">
+  <h3 style="color:#c62828; margin:0 0 12px">🔴 Cô Hương (BM — Branch Manager)</h3>
+  <p style="color:#555; font-size:.92rem; margin-bottom:10px"><b>Vai trò:</b> Giám sát toàn chi nhánh, báo cáo số liệu lên Vùng.</p>
+  <p style="color:#444; font-size:.9rem; line-height:1.8; margin:0">
+    <b>Mở app → Thấy ngay:</b><br>
+    📊 <b>Tab "Tổng Quan Ngày"</b> — Bảng tin sáng/chiều tự động hiện:<br>
+    &nbsp;&nbsp;&nbsp;• Danh sách KH tiềm năng hôm nay + % cơ hội chốt bill<br>
+    &nbsp;&nbsp;&nbsp;• KH tham gia sự kiện — đủ chưa? Cô nào chưa đảm bảo?<br>
+    &nbsp;&nbsp;&nbsp;• Cuộc gọi từng cô — ai đạt, ai chưa đạt, giải pháp<br>
+    &nbsp;&nbsp;&nbsp;• Kế hoạch Booth hôm nay<br>
+    &nbsp;&nbsp;&nbsp;• Ebook & QR: tiến độ từng người<br>
+    📅 <b>Tab "Tiến Độ Tháng"</b> — Doanh số thực tế vs chỉ tiêu, % hoàn thành<br>
+    💵 <b>Tab "Vi Phạm"</b> — Ai vi phạm gì, bao nhiêu tiền, đã thu chưa<br><br>
+    <b style="color:#c62828">→ Cô Hương không cần hỏi ai. Vùng hỏi gì — mở app đọc luôn. Trả lời trong 30 giây.</b>
+  </p>
+</div>
+
+<!-- ── ATL Thủy ──────────────────────────────────── -->
+<div style="background:#fff3e0; border:2px solid #ffcc80; border-radius:14px; padding:22px 26px; margin-bottom:18px">
+  <h3 style="color:#e65100; margin:0 0 12px">🟠 Cô Thủy (ATL — Assistant Team Lead)</h3>
+  <p style="color:#555; font-size:.92rem; margin-bottom:10px"><b>Vai trò:</b> Hỗ trợ BM giám sát team, huấn luyện EC, phân công nhiệm vụ.</p>
+  <p style="color:#444; font-size:.9rem; line-height:1.8; margin:0">
+    <b>Mở app → Thấy ngay:</b><br>
+    📊 <b>Cùng Dashboard với cô Hương</b> — Thấy toàn bộ số liệu team<br>
+    ⚙️ <b>Tab "Cấu Hình"</b> — Phân công duty (ai theo dõi STEAM, ai kiểm tra bài đăng...)<br>
+    &nbsp;&nbsp;&nbsp;• Duty xoay vòng theo tháng — chọn 1 lần là app tự giao việc<br>
+    📋 <b>Tab "Báo Cáo"</b> — Xem lại tất cả báo cáo mà EC đã nộp (lọc theo ngày, tháng)<br><br>
+    <b style="color:#e65100">→ Thay vì mất 30 phút tổng hợp Zalo, giờ chỉ cần mở app. Thời gian còn lại dùng để coaching EC.</b>
+  </p>
+</div>
+
+<!-- ── EC ─────────────────────────────────────────── -->
+<div style="background:#e8f5e9; border:2px solid #a5d6a7; border-radius:14px; padding:22px 26px; margin-bottom:18px">
+  <h3 style="color:#1b5e20; margin:0 0 12px">🟢 Các Cô EC (Education Consultant)</h3>
+  <p style="color:#555; font-size:.92rem; margin-bottom:10px"><b>Vai trò:</b> Tư vấn, gọi điện, chăm sóc khách hàng, chốt bill.</p>
+  <p style="color:#444; font-size:.9rem; line-height:1.8; margin:0">
+    <b>Mở app → Thấy ngay:</b><br>
+    📖 <b>Tab "Hướng Dẫn"</b> — Lần đầu dùng? Xem 8 bước hướng dẫn dễ hiểu<br>
+    📅 <b>Tab "Lịch Của Tôi"</b> — Hôm nay ca gì, giờ vào/ra, lịch STEAM<br>
+    📊 <b>Tab "KPI Của Tôi"</b> — Cuộc gọi đang đạt bao nhiêu/chỉ tiêu, Ebook còn thiếu mấy cuốn<br>
+    📝 <b>Tab "Báo Cáo Ngày"</b> — Checklist việc cần làm hôm nay:<br>
+    &nbsp;&nbsp;&nbsp;• Mỗi việc là 1 thẻ: <span style="color:#c62828"><b>🔴 Chưa nộp</b></span> hoặc <span style="color:#1b5e20"><b>🟢 Đã xong</b></span><br>
+    &nbsp;&nbsp;&nbsp;• Có deadline cụ thể — trễ 1 phút app tự ghi vi phạm<br>
+    &nbsp;&nbsp;&nbsp;• Có link KHTN Google Sheets + link STEAM ngay trong checklist<br>
+    &nbsp;&nbsp;&nbsp;• 16h30: App nhắc chụp ảnh KHTN → gửi nhóm Zalo<br>
+    👥 <b>Tab "KHTN"</b> — Cập nhật KH tiềm năng của mình<br>
+    💵 <b>Tab "Vi Phạm"</b> — Nếu có nợ phạt → <b>hiện mã QR chuyển khoản</b> cho cô Hồng<br><br>
+    <b style="color:#1b5e20">→ EC không cần ai nhắc. Mở app lên, thấy đỏ thì làm, xong thì xanh. Đơn giản vậy thôi.</b>
+  </p>
+</div>
+
+<!-- ── Kế Toán Hồng ──────────────────────────────── -->
+<div style="background:#e8eaf6; border:2px solid #9fa8da; border-radius:14px; padding:22px 26px; margin-bottom:18px">
+  <h3 style="color:#283593; margin:0 0 12px">🔵 Cô Hồng (Kế Toán)</h3>
+  <p style="color:#555; font-size:.92rem; margin-bottom:10px"><b>Vai trò:</b> Nhập lịch ca làm việc hàng tuần + Quản lý quỹ vi phạm.</p>
+  <p style="color:#444; font-size:.9rem; line-height:1.8; margin:0">
+    👉 Toàn bộ mô tả công việc chi tiết của Kế Toán xem tại đây:<br><br>
+    <a href="https://docs.google.com/spreadsheets/d/1O9P1NN9HdoCSFLRSBw08gPbTwU2Hm5jQ/edit?gid=2123064384#gid=2123064384"
+       target="_blank"
+       style="display:inline-block; background:#283593; color:white; padding:12px 24px;
+              border-radius:8px; text-decoration:none; font-weight:700; font-size:.95rem;">
+    📄 Mở Tài Liệu Công Việc Kế Toán (Google Sheets) →
+    </a>
+  </p>
+</div>
+
+<!-- ── QR Nộp Phạt ───────────────────────────────── -->
+<div style="background:#fce4ec; border:2px solid #ef9a9a; border-radius:14px; padding:22px 26px; margin-bottom:18px">
+  <h3 style="color:#c62828; margin:0 0 12px">💳 Cơ Chế Nộp Phạt Tự Động Bằng QR</h3>
+  <p style="color:#444; font-size:.9rem; line-height:1.8; margin:0">
+    Khi một EC vi phạm (nộp báo cáo trễ deadline), hệ thống hoạt động như sau:<br><br>
+    <b>1.</b> App tự ghi nhận vi phạm + số tiền phạt (theo quy chế đã thống nhất trước)<br>
+    <b>2.</b> EC mở app → <b>Banner cảnh báo ĐỎ</b> hiện ngay trên đầu trang: "Bạn có khoản phạt chưa nộp!"<br>
+    <b>3.</b> EC vào tab Vi Phạm → thấy <b>mã QR của cô Hồng</b> → quét nộp tiền<br>
+    <b>4.</b> Cô Hồng nhận tiền → mở app → bấm <b>"✅ Đã thu"</b><br>
+    <b>5.</b> Cảnh báo đỏ trên màn hình EC <b>tự động biến mất</b><br><br>
+    <b style="color:#c62828">Quy tắc: Banner đỏ sẽ hiện mỗi lần EC mở app — cho đến khi nào nộp xong thì thôi. Không ai cần nhắc, app tự nhắc.</b>
+  </p>
+</div>
+
+<!-- ═══ PHẦN 6: BM BÁO CÁO VỚI VÙNG ════════════════════════════════════════ -->
+<div class="sec-title">📤 CÔ HƯƠNG BÁO CÁO VỚI VÙNG — Dữ Liệu Lấy Từ Đâu?</div>
+
+<div class="alert-success">
+  <b>Cô Hương chỉ cần làm 2 bước:</b><br>
+  1. Mở app → tab "Tổng Quan Ngày" hoặc "Tiến Độ Tháng"<br>
+  2. Đọc số liệu → copy vào báo cáo Vùng<br><br>
+  <b>Không cần hỏi ai. Không cần tổng hợp. Số liệu luôn cập nhật theo thời gian thực.</b>
+</div>
+
+<h3 style="margin: 20px 0 12px; color: #2D3190">Vùng hỏi gì — Cô Hương trả lời ngay:</h3>
+
+<div class="timeline">
+  <div class="tl-row">
+    <div class="tl-time" style="color:#c62828;min-width:200px">Vùng: "Doanh số tháng đến đâu?"</div>
+    <div class="tl-content">Mở tab Tiến Độ Tháng → <b>thấy ngay tổng DS thực tế vs chỉ tiêu, %</b></div>
+  </div>
+  <div class="tl-row">
+    <div class="tl-time" style="color:#c62828;min-width:200px">Vùng: "Cuộc gọi chặng này thế nào?"</div>
+    <div class="tl-content">Tab Tổng Quan → <b>bảng từng cô: gọi bao nhiêu, đạt hay chưa</b></div>
+  </div>
+  <div class="tl-row">
+    <div class="tl-time" style="color:#c62828;min-width:200px">Vùng: "KH tiềm năng sắp chốt?"</div>
+    <div class="tl-content">Tab Tổng Quan → <b>danh sách KH, % cơ hội, ngày hẹn, EC phụ trách</b></div>
+  </div>
+  <div class="tl-row">
+    <div class="tl-time" style="color:#c62828;min-width:200px">Vùng: "Ebook QR tháng này?"</div>
+    <div class="tl-content">Tab Tổng Quan → <b>từng người: đã làm/chỉ tiêu, còn thiếu bao nhiêu</b></div>
+  </div>
+</div>
+
+<!-- ═══ PHẦN 7: SỐ LIỆU ══════════════════════════════════════════════════════ -->
+<div class="sec-title">📊 NHỮNG CON SỐ CỦA HỆ THỐNG</div>
+
+<div class="numbers">
+  <div class="num-card"><div class="n">9</div><div class="l">Người trong hệ thống</div></div>
+  <div class="num-card"><div class="n">5</div><div class="l">Loại BC tự động mỗi ngày</div></div>
+  <div class="num-card"><div class="n">0đ</div><div class="l">Chi phí duy trì hàng tháng</div></div>
+  <div class="num-card"><div class="n">~2h</div><div class="l">Tiết kiệm mỗi ngày cho BM+ATL</div></div>
+  <div class="num-card"><div class="n">100%</div><div class="l">Số liệu có thể trace lại bất kỳ ngày nào</div></div>
+</div>
+
+<!-- ═══ PHẦN 8: ĐIỀU QUAN TRỌNG NHẤT ════════════════════════════════════════ -->
+<div class="sec-title">💛 ĐIỀU QUAN TRỌNG NHẤT — Dành Cho Tất Cả Mọi Người</div>
+
+<div class="alert-warn">
+  <b>App này không phải để theo dõi — mà để giải phóng.</b><br><br>
+  Khi BM không phải dành 45 phút mỗi sáng để hối báo cáo →
+  cô có thêm 45 phút <b>để huấn luyện EC, gặp KH chiến lược, lập kế hoạch.</b><br><br>
+  Khi EC không bị hối → họ có thêm thời gian <b>thực sự gọi điện cho KH</b>
+  thay vì chạy đi chạy lại báo cáo.<br><br>
+  Khi Kế Toán không tổng hợp tay → họ <b>không còn lo sợ nhầm sót cuối tháng.</b><br><br>
+  <b>Mỗi người được trả lại thời gian để làm đúng việc của mình.</b>
+</div>
+
+<div class="quote" style="text-align:center;font-size:1.15rem">
+  "Zalo dùng để chăm sóc KH và xây dựng mối quan hệ.<br>
+  App dùng để quản lý quy trình và số liệu.<br>
+  <b>Hai thứ không thay thế nhau — chúng bổ sung cho nhau.</b>"
+</div>
+
+</div><!-- /wrap -->
+
+<div class="footer">
+  Ocean Edu Buôn Ma Thuột — Hệ thống quản trị KPI nội bộ<br>
+  Xây dựng riêng cho chi nhánh bởi ATL Trương Thị Thủy (Havira) &nbsp;|&nbsp; Tháng 10/2026
+</div>
+
+</body>
+</html>

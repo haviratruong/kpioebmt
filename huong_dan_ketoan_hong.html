@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hướng Dẫn Công Việc Trên App KPI — Ngô Thị Ánh Hồng (Kế Toán & BSA)</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; background: #f4f6fa; color: #1a1a2e; line-height: 1.7; padding-bottom: 60px; }
+  
+  .header {
+    background: linear-gradient(135deg, #1e3a8a 0%, #0284c7 100%);
+    color: white; padding: 36px 24px; text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  }
+  .header h1 { font-size: 1.8rem; font-weight: 800; margin-bottom: 6px; }
+  .header .badge {
+    display: inline-block; background: rgba(255,255,255,0.2);
+    border: 1px solid rgba(255,255,255,0.5); border-radius: 50px;
+    padding: 6px 18px; font-size: 0.9rem; font-weight: 700; margin-top: 10px;
+  }
+  
+  .container { max-width: 860px; margin: -20px auto 0; padding: 0 16px; }
+  
+  .card {
+    background: white; border-radius: 14px; padding: 24px; margin-bottom: 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.06); border: 1px solid #e2e8f0;
+  }
+  
+  .card-title {
+    font-size: 1.25rem; font-weight: 800; color: #1e3a8a; margin-bottom: 14px;
+    display: flex; align-items: center; gap: 10px; border-bottom: 2px solid #f1f5f9; padding-bottom: 10px;
+  }
+  
+  .target-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; margin: 16px 0;
+  }
+  .target-item {
+    background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 10px; padding: 14px; text-align: center;
+    border-top: 4px solid #0284c7;
+  }
+  .target-item .val { font-size: 1.3rem; font-weight: 800; color: #1e3a8a; }
+  .target-item .lbl { font-size: 0.8rem; color: #64748b; margin-top: 4px; font-weight: 600; }
+
+  .role-badge-kt { background: #dbeafe; color: #1e40af; padding: 4px 10px; border-radius: 6px; font-weight: 700; font-size: 0.85rem; }
+  .role-badge-bsa { background: #fef3c7; color: #92400e; padding: 4px 10px; border-radius: 6px; font-weight: 700; font-size: 0.85rem; }
+
+  .timeline { position: relative; margin: 20px 0 10px; padding-left: 20px; border-left: 3px solid #0284c7; }
+  .tl-item { position: relative; margin-bottom: 24px; }
+  .tl-item::before {
+    content: ''; position: absolute; left: -28px; top: 4px; width: 14px; height: 14px;
+    border-radius: 50%; background: #1e3a8a; border: 3px solid white; box-shadow: 0 0 0 2px #0284c7;
+  }
+  .tl-time { font-size: 0.95rem; font-weight: 800; color: #1e3a8a; display: inline-block; background: #e0f2fe; padding: 2px 10px; border-radius: 4px; margin-bottom: 6px; }
+  .tl-body { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px 16px; font-size: 0.92rem; }
+  .tl-body b { color: #1e293b; }
+  .tl-body p { margin-top: 4px; color: #475569; }
+
+  .alert-info { background: #eff6ff; border-left: 5px solid #2563eb; padding: 14px 18px; border-radius: 8px; font-size: 0.92rem; margin: 12px 0; }
+  .alert-success { background: #f0fdf4; border-left: 5px solid #16a34a; padding: 14px 18px; border-radius: 8px; font-size: 0.92rem; margin: 12px 0; color: #166534; }
+
+  @media (max-width: 600px) {
+    .target-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>💰 HƯỚNG DẪN CÔNG VIỆC TRÊN APP KPI</h1>
+  <p>Dành riêng cho: <b>Ngô Thị Ánh Hồng (Kế Toán Chi Nhánh & Chuyên Viên BSA)</b></p>
+  <div class="badge">Ocean Edu Buôn Ma Thuột — Vận Hành 2026</div>
+</div>
+
+<div class="container">
+
+  <!-- CARD 1: VAI TRÒ KÉP -->
+  <div class="card">
+    <div class="card-title">📌 Tổng Quan Hai Vai Trò Của Hồng Trên App</div>
+    <p>Chị Hồng đảm nhận <b>2 vai trò rất quan trọng</b> trên hệ thống:</p>
+    
+    <div style="margin-top: 14px; display: grid; gap: 12px;">
+      <div style="background: #f8fafc; border: 1px solid #bfdbfe; border-radius: 8px; padding: 14px;">
+        <span class="role-badge-kt">VAI TRÒ 1: KẾ TOÁN CHI NHÁNH</span>
+        <h4 style="margin: 8px 0 4px; color: #1e40af;">Quản Trị Lịch Ca, Lịch STEAM & Quản Lý Quỹ Vi Phạm</h4>
+        <p style="font-size: 0.9rem; color: #475569;">Xếp lịch ca làm việc đầu tuần cho toàn bộ nhân sự, nhập sự kiện STEAM từ phòng đào tạo và xác nhận thu tiền phạt nộp trễ của các cô.</p>
+      </div>
+
+      <div style="background: #f8fafc; border: 1px solid #fde68a; border-radius: 8px; padding: 14px;">
+        <span class="role-badge-bsa">VAI TRÒ 2: NHÂN SỰ CHUYÊN MÔN (BSA)</span>
+        <h4 style="margin: 8px 0 4px; color: #92400e;">Thực Hiện Chỉ Tiêu Tuyển Sinh & Đồng Quản Lý 6 Booth</h4>
+        <p style="font-size: 0.9rem; color: #475569;">Tham gia chỉ tiêu doanh thu 69.55M, theo dõi cuộc gọi >60s (tự động miễn khi đạt ≥90% doanh số), 10 cuốn Ebook, 17 lượt quét QR Zalo Game, đồng quản lý 6 điểm Booth cùng Trâm Anh và kiểm tra bài đăng đồng đội.</p>
+      </div>
+    </div>
+
+    <div class="alert-info" style="margin-top:16px;">
+      🔐 <b>Cách đăng nhập:</b><br>
+      • Đăng nhập nhanh: Chọn <b>"Ngô Thị Ánh Hồng (BSA/KT)"</b> ➔ Bấm <b>🚀 Vào App Ngay</b>.<br>
+      • Hoặc gõ tài khoản: <code>ketoan_hong</code> | Mật khẩu: <code>123456</code>.
+    </div>
+  </div>
+
+  <!-- CARD 2: CÔNG VIỆC KẾ TOÁN -->
+  <div class="card">
+    <div class="card-title">📋 NHIỆM VỤ 1: Công Việc Kế Toán Vận Hành (Hồng Cần Điền Gì?)</div>
+    
+    <div class="timeline">
+      
+      <div class="tl-item">
+        <div class="tl-time">ĐẦU MỖI TUẦN (MẤT 5 PHÚT)</div>
+        <div class="tl-body">
+          <b>📅 1. Chia Lịch Ca Làm Việc Cả Tuần Cho Toàn Team</b>
+          <p>• <b>Vào đâu:</b> Mở tab <b>"📅 Chia Lịch Ca & STEAM"</b> ➔ Mục <b>"📋 Chia Ca Theo Tuần"</b>.</p>
+          <p>• <b>Thao tác:</b> Chọn tuần ➔ Bảng 9 người x 7 ngày hiện ra ➔ Chọn ca tương ứng cho từng bạn: <code>P1</code> (07:20–17:40), <code>P2</code> (09:00–19:20), <code>P3</code> (13:00–21:40), <code>P4</code> (08:30–18:30) hoặc <code>OFF</code> (Nghỉ) ➔ Bấm nút màu xanh <b>"💾 Lưu Lịch Cả Tuần"</b>.</p>
+          <p style="color:#0369a1;"><i>👉 Tác dụng: Hệ thống tự động biết deadline nộp báo cáo từng ca của các cô, tự động tính giờ và đếm ngược deadline.</i></p>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-time">KHI CÓ LỊCH TỪ ĐÀO TẠO</div>
+        <div class="tl-body">
+          <b>🔬 2. Nhập Lịch Sự Kiện STEAM Trường Học</b>
+          <p>• <b>Vào đâu:</b> Cùng trong tab <b>"📅 Chia Lịch Ca & STEAM"</b> ➔ Chuyển sang mục <b>"🔬 Lịch Sự Kiện STEAM"</b>.</p>
+          <p>• <b>Thao tác:</b> Điền ngày, giờ tổ chức (VD: 08:00 – 11:00), tên sự kiện, tên trường học (VD: TH Lê Quý Đôn), tick chọn các bạn EC đi hỗ trợ (VD: Trâm Anh, Dương...) ➔ Bấm <b>"💾 Lưu Sự Kiện STEAM"</b>.</p>
+          <p style="color:#0369a1;"><i>👉 Tác dụng: Tự động ghép vào lịch làm việc và hiện banner nhắc việc màu tím trên màn hình của các bạn EC được phân công.</i></p>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-time">HẰNG NGÀY / KHI THU TIỀN PHẠT</div>
+        <div class="tl-body">
+          <b>💰 3. Quản Lý Quỹ Vi Phạm & Xác Nhận Thu Tiền Phạt</b>
+          <p>• <b>Vào đâu:</b> Mở tab <b>"💰 Quỹ Vi Phạm (Thu Tiền)"</b>.</p>
+          <p>• <b>Thao tác:</b> Khi có EC nộp báo cáo trễ hoặc đồng đội kiểm tra chưa đạt, hệ thống tự động ghi 1 dòng phạt 50.000đ. EC sẽ quét mã QR của Hồng (`qr_hong.jfif`) để chuyển khoản nộp phạt.</p>
+          <p>• Khi nhận được tiền: Hồng vào tab này, tìm đúng dòng của bạn đó và bấm nút <b>"✅ Đã thu"</b>.</p>
+          <p style="color:#15803d; font-weight:600;"><i>👉 Tác dụng: Tổng tiền quỹ tháng tự cộng dồn, và cảnh báo đỏ trên điện thoại của EC đó sẽ tự động biến mất ngay lập tức!</i></p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- CARD 3: CHỈ TIÊU & CÔNG VIỆC CHUYÊN MÔN BSA -->
+  <div class="card">
+    <div class="card-title">🎯 NHIỆM VỤ 2: Công Việc Chuyên Môn BSA Của Hồng (Cần Điền Gì?)</div>
+    <p style="font-size:0.9rem; color:#64748b;">Hồng được giao chỉ tiêu chuyên môn BSA theo đúng bảng phân bổ tháng của chi nhánh:</p>
+
+    <div class="target-grid">
+      <div class="target-item">
+        <div class="val">69.55 Triệu</div>
+        <div class="lbl">DOANH THU CĂN BẢN BSA</div>
+      </div>
+      <div class="target-item">
+        <div class="val">3 Học Viên</div>
+        <div class="lbl">CHỈ TIÊU HỌC VIÊN MỚI</div>
+      </div>
+      <div class="target-item">
+        <div class="val">45 Cuộc</div>
+        <div class="lbl">CUỘC GỌI / CHẶNG</div>
+      </div>
+      <div class="target-item">
+        <div class="val">10 Cuốn</div>
+        <div class="lbl">CHỈ TIÊU EBOOK THÁNG</div>
+      </div>
+      <div class="target-item">
+        <div class="val">17 Lượt</div>
+        <div class="lbl">QUÉT QR ZALO GAME</div>
+      </div>
+      <div class="target-item">
+        <div class="val">6 Điểm</div>
+        <div class="lbl">ĐỒNG QUẢN LÝ BOOTH</div>
+      </div>
+    </div>
+
+    <h4 style="color:#1e3a8a; margin: 18px 0 10px;">Hồng thao tác hằng ngày tại Tab "📝 Báo Cáo Ngày & Ebook / QR Của Tôi":</h4>
+    
+    <div style="display:flex; flex-direction:column; gap:12px;">
+      <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:12px 16px;">
+        <b>1. Nhập Số Điện Thoại Ebook & Zalo QR:</b><br>
+        Kéo xuống mục <i>"Chỉ Tiêu Ebook & QR Tháng Này"</i>: Khi Hồng phát được Ebook hoặc hướng dẫn khách quét QR Zalo, gõ SĐT phụ huynh vào ô tương ứng rồi bấm Lưu. Hệ thống tự trừ lùi chỉ tiêu (10 Ebook, 17 QR).
+      </div>
+
+      <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:12px 16px;">
+        <b>2. Báo Cáo Đầu Ca & Cuối Ca:</b><br>
+        Đầu ca: Mở thẻ <i>Báo cáo Đầu Ca</i> điền cam kết. Cuối ca: Mở thẻ <i>Báo cáo Cuối Ca</i> nộp kết quả thực tế.
+      </div>
+
+      <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:12px 16px;">
+        <b>3. Điền Chỉ Số Cuộc Gọi & Doanh Thu (trước 21:00):</b><br>
+        Mở thẻ <i>Điền Chỉ Số Ngày</i>: Điền số cuộc gọi thực tế của Hồng (định mức chặng BSA là 45 cuộc) và doanh thu thu được.
+      </div>
+
+      <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:12px 16px;">
+        <b>4. Kiểm Tra Đồng Đội (Peer Check):</b><br>
+        Kéo xuống chân trang mục <i>Vòng Tròn Kiểm Tra Đồng Đội</i>: Tháng này Hồng được phân công kiểm tra bạn <b>Nguyễn Thị Trâm Anh (EC)</b>. Hồng xem Trâm Anh đã đăng bài FB/Zalo và tương tác chưa ➔ Tích chọn <b>"✅ Đạt"</b> hoặc <b>"❌ Chưa đạt"</b> ➔ Bấm Xác nhận.
+      </div>
+
+      <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:12px 16px;">
+        <b>5. Quản Lý Kế Hoạch 6 Điểm Booth (Tab "🏪 Quản Lý 6 Booth"):</b><br>
+        Mở tab <b>"🏪 Quản Lý 6 Booth (Hồng + Trâm Anh)"</b>: Xem tiến độ 6 điểm Booth tại TTTM Vincom, Co.opmart... Khi triển khai xong điểm nào, bấm mở form cập nhật số Booth đã chạy (từ 0 lên 6 Booth) và phân công các cô cùng tham gia.
+      </div>
+    </div>
+  </div>
+
+  <div class="alert-success">
+    ✅ <b>Tóm lại một câu:</b> Đầu tuần Hồng vào <b>Chia Lịch Ca</b>; Hằng ngày thu tiền phạt thì bấm <b>"Đã Thu"</b>; Khi phát Ebook/QR thì <b>nhập SĐT trừ dần chỉ tiêu</b> và cùng Trâm Anh <b>báo cáo tiến độ 6 điểm Booth</b>!
+  </div>
+
+</div>
+
+</body>
+</html>

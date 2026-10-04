@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cẩm Nang Hướng Dẫn Sử Dụng App KPI — Chuyên Viên Tư Vấn Tuyển Sinh (EC)</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; background: #f4f6fa; color: #1a1a2e; line-height: 1.7; padding-bottom: 60px; }
+  
+  /* HEADER */
+  .header {
+    background: linear-gradient(135deg, #2D3190 0%, #00AEEF 100%);
+    color: white; padding: 36px 24px; text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  }
+  .header h1 { font-size: 1.8rem; font-weight: 800; margin-bottom: 6px; }
+  .header p { font-size: 1.05rem; opacity: 0.95; }
+  .header .badge {
+    display: inline-block; background: rgba(255,255,255,0.2);
+    border: 1px solid rgba(255,255,255,0.5); border-radius: 50px;
+    padding: 6px 18px; font-size: 0.9rem; font-weight: 700; margin-top: 10px;
+  }
+  
+  .container { max-width: 860px; margin: -20px auto 0; padding: 0 16px; }
+  
+  .card {
+    background: white; border-radius: 14px; padding: 24px; margin-bottom: 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.06); border: 1px solid #e2e8f0;
+  }
+  
+  .card-title {
+    font-size: 1.25rem; font-weight: 800; color: #2D3190; margin-bottom: 14px;
+    display: flex; align-items: center; gap: 10px; border-bottom: 2px solid #f1f5f9; padding-bottom: 10px;
+  }
+  
+  .target-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 12px; margin: 16px 0;
+  }
+  .target-item {
+    background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 10px; padding: 14px; text-align: center;
+    border-top: 4px solid #00AEEF;
+  }
+  .target-item .val { font-size: 1.3rem; font-weight: 800; color: #2D3190; }
+  .target-item .lbl { font-size: 0.8rem; color: #64748b; margin-top: 4px; font-weight: 600; }
+
+  /* TIMELINE */
+  .timeline { position: relative; margin: 20px 0 10px; padding-left: 20px; border-left: 3px solid #00AEEF; }
+  .tl-item { position: relative; margin-bottom: 24px; }
+  .tl-item::before {
+    content: ''; position: absolute; left: -28px; top: 4px; width: 14px; height: 14px;
+    border-radius: 50%; background: #2D3190; border: 3px solid white; box-shadow: 0 0 0 2px #00AEEF;
+  }
+  .tl-time { font-size: 0.95rem; font-weight: 800; color: #2D3190; display: inline-block; background: #e0f2fe; padding: 2px 10px; border-radius: 4px; margin-bottom: 6px; }
+  .tl-time.urgent { background: #fee2e2; color: #dc2626; }
+  .tl-body { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px 16px; font-size: 0.92rem; }
+  .tl-body b { color: #1e293b; }
+  .tl-body p { margin-top: 4px; color: #475569; }
+
+  /* ALERT BOXES */
+  .alert-info { background: #eff6ff; border-left: 5px solid #2563eb; padding: 14px 18px; border-radius: 8px; font-size: 0.92rem; margin: 12px 0; }
+  .alert-warn { background: #fef2f2; border-left: 5px solid #dc2626; padding: 14px 18px; border-radius: 8px; font-size: 0.92rem; margin: 12px 0; color: #991b1b; }
+  .alert-success { background: #f0fdf4; border-left: 5px solid #16a34a; padding: 14px 18px; border-radius: 8px; font-size: 0.92rem; margin: 12px 0; color: #166534; }
+
+  /* TABS LIST */
+  .tab-guide { margin: 14px 0; }
+  .tab-row { display: flex; gap: 14px; margin-bottom: 12px; align-items: flex-start; }
+  .tab-tag { background: #2D3190; color: white; border-radius: 6px; padding: 4px 12px; font-size: 0.85rem; font-weight: 700; white-space: nowrap; min-width: 140px; text-align: center; }
+  .tab-desc { font-size: 0.9rem; color: #334155; }
+
+  @media (max-width: 600px) {
+    .target-grid { grid-template-columns: 1fr 1fr; }
+    .tab-row { flex-direction: column; gap: 4px; }
+    .tab-tag { min-width: auto; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>🌊 CẨM NANG HƯỚNG DẪN SỬ DỤNG APP KPI</h1>
+  <p>Dành cho: <b>Chuyên Viên Tư Vấn Tuyển Sinh (EC) & Nhân Sự Chi Nhánh</b></p>
+  <div class="badge">Hệ Thống Quản Trị Kỷ Luật & KPI — Ocean Edu Buôn Ma Thuột</div>
+</div>
+
+<div class="container">
+
+  <!-- CARD 1: CÁCH TRUY CẬP VÀ ĐĂNG NHẬP -->
+  <div class="card">
+    <div class="card-title">🚀 Bước 1: Cách Vào App & Đăng Nhập (Mất 5 Giây)</div>
+    
+    <p>Bạn có thể mở App trên <b>máy tính bàn chi nhánh</b> hoặc <b>điện thoại cá nhân</b> (bắt cùng mạng Wifi văn phòng):</p>
+    
+    <div class="alert-info">
+      🔗 <b>Địa chỉ truy cập hệ thống:</b><br>
+      • Trên máy tính bàn: <a href="http://localhost:8501" target="_blank" style="color:#2563eb; font-weight:700">http://localhost:8501</a><br>
+      • Trên điện thoại / laptop cá nhân: <b>http://192.168.1.4:8501</b> (khi kết nối Wifi văn phòng chi nhánh)
+    </div>
+
+    <p style="margin-top:12px;"><b>Cách đăng nhập vào hệ thống:</b></p>
+    <ul style="margin-left: 20px; font-size: 0.92rem; color: #334155; margin-top: 6px;">
+      <li><b>Cách 1 (Nhanh nhất):</b> Tại ô <b>"Chọn tài khoản của bạn"</b> ➔ Chọn tên của bạn trong danh sách ➔ Bấm nút màu xanh <b>"🚀 Vào App Ngay Với Tài Khoản Này"</b>.</li>
+      <li><b>Cách 2 (Đăng nhập mật khẩu):</b> 
+        <br>• Tên đăng nhập: Theo chuẩn <code>&lt;ten&gt;_ec</code> (Ví dụ: <code>duong_ec</code>, <code>tramanh_ec</code>, <code>yennhi_ec</code>, <code>nhung_ec</code>...).
+        <br>• Mật khẩu khởi tạo mặc định: <code>123456</code>.
+      </li>
+      <li><b>➕ Dành cho nhân sự mới nhận việc:</b> Bấm sang tab <b>"➕ Đăng Ký Nhân Sự Mới"</b> ngay tại màn hình đăng nhập ➔ Gõ họ tên, chọn vị trí EC ➔ Nhập mã bí mật chi nhánh: <code>OE2026</code> ➔ Hệ thống tự động tạo tài khoản và đưa bạn vào làm việc ngay.</li>
+    </ul>
+
+    <div class="alert-warn" style="margin-top:14px;">
+      🔐 <b>BẮT BUỘC ĐỔI MẬT KHẨU LẦN ĐẦU:</b> Khi đăng nhập lần đầu với mật khẩu <code>123456</code>, hệ thống sẽ yêu cầu bạn <b>tự đặt mật khẩu riêng tư của mình</b> để bảo mật dữ liệu khách hàng. Sau khi đổi mật khẩu xong, bạn sẽ vào màn hình làm việc bình thường.
+    </div>
+  </div>
+
+  <!-- CARD 2: CHỈ TIÊU CĂN BẢN CỦA EC -->
+  <div class="card">
+    <div class="card-title">🎯 Bước 2: Nắm Rõ Khung Chỉ Tiêu Tháng Căn Bản Của EC</div>
+    <p style="font-size:0.9rem; color:#64748b;">Hệ thống đã nạp sẵn khung chỉ tiêu tháng của từng chuyên viên tuyển sinh. Mọi nỗ lực hằng ngày của bạn sẽ tự động cộng dồn theo thời gian thực:</p>
+    
+    <div class="target-grid">
+      <div class="target-item">
+        <div class="val">107 Triệu</div>
+        <div class="lbl">DOANH THU CĂN BẢN</div>
+      </div>
+      <div class="target-item">
+        <div class="val">5 Học Viên</div>
+        <div class="lbl">CHỈ TIÊU HỌC VIÊN MỚI</div>
+      </div>
+      <div class="target-item">
+        <div class="val">488 Cuộc</div>
+        <div class="lbl">CUỘC GỌI >60S / THÁNG</div>
+      </div>
+      <div class="target-item">
+        <div class="val">20 Cuộc / Ngày</div>
+        <div class="lbl">ĐỊNH MỨC NGÀY ĐI LÀM (TRỪ 6 NGÀY OFF)</div>
+      </div>
+      <div class="target-item">
+        <div class="val">10 Cuốn</div>
+        <div class="lbl">CHỈ TIÊU EBOOK THÁNG</div>
+      </div>
+      <div class="target-item">
+        <div class="val">17 Lượt</div>
+        <div class="lbl">QUÉT QR ZALO GAME</div>
+      </div>
+    </div>
+
+    <div class="alert-success">
+      💡 <b>Quy chế miễn phạt cuộc gọi:</b> Chuyên viên chỉ cần đạt <b>1 trong 3 điều kiện</b> sau trong chặng là được miễn phạt thiếu cuộc gọi:
+      (1) Có > 200 data mới; (2) Có > 1 sự kiện tự kết nối; (3) Doanh số chặng đạt > 70%.<br><br>
+      🎉 <b>ĐẶC BIỆT — LIÊN KẾT MIỄN CUỘC GỌI KHI ĐẠT ≥90% DOANH SỐ THÁNG:</b> Hệ thống tự động liên kết số liệu Doanh thu sang Bảng cuộc gọi. Ngay khi nhân sự đạt từ <b>90% chỉ tiêu doanh số tháng</b> trở lên, App sẽ <b>TỰ ĐỘNG BẬT TRẠNG THÁI MIỄN ĐỊNH MỨC CUỘC GỌI</b>: Bảng theo dõi của BM và form nhập chỉ số ngày sẽ tự động hiện <i>"🎉 Miễn gọi (Đạt ≥90% DT)"</i>, không bắt buộc gọi đủ 20 cuộc/ngày và không bị tính thiếu!
+    </div>
+  </div>
+
+  <!-- CARD 3: THỜI GIAN BIỂU 1 NGÀY CỤ THỂ -->
+  <div class="card">
+    <div class="card-title">⏰ Bước 3: Một Ngày Cụ Thể Bạn Cần Làm Gì & Vào Giờ Nào?</div>
+    <p style="font-size:0.9rem; color:#64748b; margin-bottom: 12px;">Quy tắc vàng: <b>"Thẻ Đỏ 🔴 thì làm — Nộp xong tự chuyển Xanh 🟢"</b>. Bạn mở Tab <b>"📝 Báo Cáo Ngày"</b> và thao tác theo các mốc giờ:</p>
+
+    <div class="timeline">
+
+      <!-- MỐC 1 -->
+      <div class="tl-item">
+        <div class="tl-time urgent">TRƯỚC GIỜ VÀO CA 10–15 PHÚT</div>
+        <div class="tl-body">
+          <b>🌅 Điền Báo Cáo Đầu Ca (Timeline + Cam Kết Hoạt Động)</b>
+          <p>• <b>Vào đâu:</b> Mở tab <b>"📝 Báo Cáo Ngày"</b> ➔ Thẻ đầu tiên <b>"Báo cáo Đầu Ca"</b> (đang có viền đỏ 🔴).</p>
+          <p>• <b>Thao tác:</b> Mở thẻ ra (mẫu đã điền sẵn cấu trúc), bạn điền: Ca làm việc hôm nay, số cuộc gọi dự kiến (định mức: tối thiểu 20 cuộc), doanh thu mục tiêu hôm nay ➔ Bấm <b>"Nộp Báo Cáo"</b> ➔ Thẻ chuyển sang màu xanh lá 🟢.</p>
+          <p style="color:#dc2626; font-weight:600">• ⚠️ Quy định hạn chốt theo ca: Ca P1 trước 07:20 | P2 trước 09:00 | P3 trước 13:00 | P4 trước 08:30. Quá giờ vào ca 1 phút hệ thống tự động ghi nhận vi phạm phạt 50.000đ.</p>
+        </div>
+      </div>
+
+      <!-- MỐC 2 -->
+      <div class="tl-item">
+        <div class="tl-time">TRƯỚC 08:30 SÁNG</div>
+        <div class="tl-body">
+          <b>👥 Xác Nhận Cập Nhật Khách Hàng Tiềm Năng (KHTN)</b>
+          <p>• Mở thẻ <b>"Cập nhật KHTN"</b> ➔ Xác nhận đã cập nhật danh sách khách hẹn lên trong ngày để Quản lý và BM nắm số liệu điều hành.</p>
+        </div>
+      </div>
+
+      <!-- MỐC 3 -->
+      <div class="tl-item">
+        <div class="tl-time">TRONG SUỐT CA LÀM VIỆC</div>
+        <div class="tl-body">
+          <b>📞 Telesale, Nhập KHTN & Trừ Dần Chỉ Tiêu Ebook / QR</b>
+          <p>• <b>Khi có khách hàng mới hoặc phụ huynh hẹn lịch:</b> Mở tab <b>"👥 KHTN Của Tôi"</b> ➔ Bấm <i>"Thêm KH Tiềm Năng"</i> ➔ Gõ tên bé, tên PH, SĐT, lớp dự kiến, ngày hẹn tiếp. BM Hương mở app sẽ thấy ngay cơ hội chốt bill để hỗ trợ.</p>
+          <p>• <b>Khi phát được 1 Ebook hoặc khách quét 1 QR Zalo Game:</b> Kéo xuống mục <b>"Chỉ Tiêu Ebook & QR Tháng Này"</b> ngay trong tab Báo Cáo Ngày ➔ Nhập SĐT phụ huynh ➔ Bấm Lưu. Vạch đỏ sẽ trừ lùi dần (từ 10 Ebook và 17 QR giảm về 0).</p>
+          <p>• <b>Theo dõi lịch STEAM:</b> Nếu có tên bạn được phân công đi hỗ trợ STEAM tại trường học, đầu trang Báo Cáo Ngày sẽ có một banner màu tím thông báo giờ giấc và địa điểm tổ chức.</p>
+        </div>
+      </div>
+
+      <!-- MỐC 4 -->
+      <div class="tl-item">
+        <div class="tl-time">16:30 CHIỀU</div>
+        <div class="tl-body">
+          <b>📸 Chụp Ảnh KHTN Báo Nhóm Zalo OE</b>
+          <p>• App có thẻ nhắc việc màu cam: Bạn chụp ảnh danh sách/sổ KHTN chiều hôm nay và gửi lên nhóm Zalo chi nhánh Ocean Edu BMT.</p>
+        </div>
+      </div>
+
+      <!-- MỐC 5 -->
+      <div class="tl-item">
+        <div class="tl-time urgent">TRƯỚC 21:00 TỐI</div>
+        <div class="tl-body">
+          <b>📊 Điền Chỉ Số Ngày (Cuộc Gọi >60s, Doanh Thu, Check-in)</b>
+          <p>• <b>Vào đâu:</b> Tab <b>"📝 Báo Cáo Ngày"</b> ➔ Thẻ <b>"Điền Chỉ Số Ngày"</b>.</p>
+          <p>• <b>Thao tác:</b> Nhập số cuộc gọi thực tế đã gọi hôm nay (định mức: 20 cuộc >60s/ngày), doanh thu phát sinh (nếu có, đơn vị nghìn đồng: ví dụ 5 triệu gõ 5000), số lượt khách check-in chi nhánh, số cọc nhỏ.</p>
+          <p>• <b>Nếu hôm nay đi làm mà gọi dưới 20 cuộc:</b> Tự động điền 1 câu giải trình nguyên nhân (máy bận, khách họp...) và đề xuất bù bao nhiêu cuộc vào ngày mai ➔ Bấm Nộp.</p>
+        </div>
+      </div>
+
+      <!-- MỐC 6 -->
+      <div class="tl-item">
+        <div class="tl-time">KẾT THÚC CA (TRƯỚC 22:00)</div>
+        <div class="tl-body">
+          <b>🌙 Báo Cáo Cuối Ca (Kết Quả & Rút Kinh Nghiệm)</b>
+          <p>• Mở thẻ <b>"Báo cáo Cuối Ca"</b> ➔ Điền kết quả thực tế so với cam kết đầu ca và 1 bài học rút kinh nghiệm hôm nay ➔ Bấm Nộp.</p>
+        </div>
+      </div>
+
+      <!-- MỐC 7 -->
+      <div class="tl-item">
+        <div class="tl-time">TRƯỚC 23:59 ĐÊM</div>
+        <div class="tl-body">
+          <b>🔄 Đăng Bài MKT & Kiểm Tra Đồng Đội (Peer Check)</b>
+          <p>• Mỗi ngày đăng 1 bài viết trên Facebook + Zalo cá nhân; like và tương tác nhóm chỉ đạo.</p>
+          <p>• Kéo xuống chân tab <b>"📝 Báo Cáo Ngày"</b> ➔ Mục <b>"Vòng Tròn Kiểm Tra Đồng Đội"</b>: Xem bạn được phân công kiểm tra ai tháng này ➔ Xem đồng đội đã đăng bài chưa, tích chọn <i>"✅ Đạt"</i> hoặc <i>"❌ Chưa đạt"</i> ➔ Bấm Xác nhận.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- CARD 4: VIỆC HÀNG TUẦN -->
+  <div class="card">
+    <div class="card-title">📅 Bước 4: Việc Cần Làm Vào Thứ 5 & Chủ Nhật Hàng Tuần</div>
+    <p style="font-size:0.9rem; color:#64748b; margin-bottom: 10px;">Vào tab <b>"📅 Báo Cáo Tuần / Tháng"</b> trên thanh menu:</p>
+    
+    <div class="tab-guide">
+      <div class="tab-row">
+        <div class="tab-tag" style="background:#0284c7;">Tối Thứ 5 (trước 21:30)</div>
+        <div class="tab-desc">Nộp <b>Báo cáo Chặng 2</b>: Lập mục tiêu cuộc gọi, doanh thu và khách hẹn cho 3 ngày cao điểm cuối tuần (Thứ 6, Thứ 7, Chủ Nhật).</div>
+      </div>
+      <div class="tab-row">
+        <div class="tab-tag" style="background:#7c3aed;">Tối Chủ Nhật (trước 21:30)</div>
+        <div class="tab-desc">Nộp <b>Mục Tiêu Tuần Mới</b> & <b>Báo Cáo Nhìn Nhận Tuần Cũ</b>: Đánh giá những việc đã làm tốt, việc chưa đạt tuần qua và cam kết số liệu tuần tới. <i>(Lưu ý: Báo cáo tuần là bắt buộc kể cả ngày Chủ nhật bạn được xếp ca OFF)</i>.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARD 5: Ý NGHĨA CÁC TAB CÒN LẠI -->
+  <div class="card">
+    <div class="card-title">🧭 Bước 5: Giới Thiệu Nhanh 7 Tab Màn Hình Của EC</div>
+    
+    <div class="tab-guide">
+      <div class="tab-row">
+        <div class="tab-tag">📖 Hướng Dẫn</div>
+        <div class="tab-desc">Xem lại bảng giờ ca làm việc P1–P4, bảng quy chế phạt và 5 quy tắc vàng vận hành PTS.</div>
+      </div>
+      <div class="tab-row">
+        <div class="tab-tag">📅 Lịch Của Tôi</div>
+        <div class="tab-desc">Xem lịch ca của mình trong tuần (hôm nay làm ca gì, mấy giờ vào/kết ca) và danh sách các sự kiện STEAM được phân công.</div>
+      </div>
+      <div class="tab-row">
+        <div class="tab-tag">📊 KPI Của Tôi</div>
+        <div class="tab-desc">Xem tiến độ cá nhân: đã gọi được bao nhiêu cuộc so với 488 cuộc/tháng, doanh thu thực tế so với 107 triệu.</div>
+      </div>
+      <div class="tab-row">
+        <div class="tab-tag">📝 Báo Cáo Ngày</div>
+        <div class="tab-desc"><b>Tab quan trọng nhất dùng hằng ngày:</b> Chứa checklist tất cả đầu việc từ sáng đến tối, đếm ngược deadline và nhập SĐT Ebook/QR.</div>
+      </div>
+      <div class="tab-row">
+        <div class="tab-tag">📅 Báo Cáo Tuần / Tháng</div>
+        <div class="tab-desc">Dùng vào tối Thứ 5 và tối Chủ Nhật để nộp báo cáo Chặng và Mục tiêu tuần.</div>
+      </div>
+      <div class="tab-row">
+        <div class="tab-tag">👥 KHTN Của Tôi</div>
+        <div class="tab-desc">Nơi lưu danh bạ các phụ huynh tiềm năng của riêng bạn. Bạn thêm mới, sửa trạng thái hoặc xuất mẫu báo cáo gửi quản lý.</div>
+      </div>
+      <div class="tab-row">
+        <div class="tab-tag">💵 Vi Phạm</div>
+        <div class="tab-desc">Xem danh sách các lỗi phạt (nếu có lỡ nộp trễ) và có sẵn mã QR của Kế toán Hồng để quét chuyển khoản nộp phạt.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SUMMARY BOX -->
+  <div class="alert-warn" style="background:#fef3c7; border-left:5px solid #d97706; color:#92400e;">
+    <h4 style="margin-bottom:6px; font-weight:800;">💛 Lời Nhắn Gửi Tới Đội Ngũ Tuyển Sinh:</h4>
+    App được thiết kế để <b>bảo vệ thời gian và công sức cho bạn</b>: Không còn ai phải nhắn tin hối thúc trên Zalo, không lo bị tính phạt nhầm giờ vì app tự canh deadline theo đúng ca làm việc thực tế của bạn. Bạn chỉ cần mở app mỗi ngày: <b>Thấy Đỏ 🔴 thì làm ➔ Nộp xong chuyển Xanh 🟢</b> là hoàn thành xuất sắc nhiệm vụ!
+  </div>
+
+</div>
+
+</body>
+</html>

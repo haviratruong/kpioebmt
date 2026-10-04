@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+.venv/
+env/
+patch_*.py
+fix_*.py
+make_*.py
+assemble_*.py
+clean_*.py
+test_*.py
+app_backup_*.py
+app_v10_fix.py
