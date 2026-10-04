@@ -3681,6 +3681,14 @@ def render_cm_view():
 
 # CSS Global — màu Ocean Edu
 st.markdown(f"""<style>
+/* Ẩn hoàn toàn thanh công cụ Streamlit (Share, Edit, GitHub, Star, Footer) cho người dùng */
+#MainMenu {visibility: hidden; display: none !important;}
+header {visibility: hidden; display: none !important;}
+footer {visibility: hidden; display: none !important;}
+[data-testid="stToolbar"] {visibility: hidden; display: none !important;}
+[data-testid="stDecoration"] {visibility: hidden; display: none !important;}
+[data-testid="stStatusWidget"] {visibility: hidden; display: none !important;}
+
 /* Nút chính dùng màu xanh Ocean Edu */
 .stButton > button[kind="primary"] {{
     background-color: {OE_BLUE_DARK} !important;
