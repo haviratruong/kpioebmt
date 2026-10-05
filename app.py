@@ -3194,8 +3194,10 @@ def render_monthly_planning():
                 pos_opts = ["ATL","EC 1","EC 2","EC 3","CM","BSA","SAB"]
                 position = st.selectbox("Vị trí", pos_opts, index=pos_opts.index(ex["position"]) if ex and ex["position"] in pos_opts else 1)
                 t_dt = st.number_input("Chỉ tiêu DT tháng (K)", min_value=0, step=1000, value=int(ex["target_doanh_thu"]) if ex else 0)
-                t_goi_c1 = st.number_input("Cuộc gọi Chặng 1", min_value=0, step=10, value=ex["target_cuoc_goi_chang1"] if ex else 180)
-                t_goi_c2 = st.number_input("Cuộc gọi Chặng 2", min_value=0, step=10, value=ex["target_cuoc_goi_chang2"] if ex else 180)
+                default_c1 = 18 if position == "BSA" else 70
+                default_c2 = 12 if position == "BSA" else 50
+                t_goi_c1 = st.number_input("Cuộc gọi Chặng 1 (T2-T5)", min_value=0, step=5, value=ex["target_cuoc_goi_chang1"] if ex and ex["target_cuoc_goi_chang1"] else default_c1)
+                t_goi_c2 = st.number_input("Cuộc gọi Chặng 2 (T6-CN)", min_value=0, step=5, value=ex["target_cuoc_goi_chang2"] if ex and ex["target_cuoc_goi_chang2"] else default_c2)
             with col2:
                 t_ci_ld = st.number_input("Check-in Lần đầu", min_value=0, step=1, value=ex["target_checkin_landau"] if ex else 44)
                 t_ci_sk = st.number_input("Check-in Sự kiện", min_value=0, step=1, value=ex["target_checkin_sk"] if ex else 44)
